@@ -1,1 +1,2 @@
-Hello team, put readme stuff here - RQ
+Take a photo - fswebcam --save test.jpg
+Read code - python qrread.py
