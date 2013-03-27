@@ -4,8 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.ArrayList;
+
+
 
 /**
  * Hello world!
@@ -18,6 +19,13 @@ public class App
     	boolean start = false;
     	
     	File file = new File("bang.txt");
+    	int health = 0;
+    	ArrayList    roles =  new ArrayList();
+    	//card holders
+    	String colorOfCard = "";
+    	String B1 = "";
+    	String B2 = "";
+    	
     	   	
     	
     	BufferedReader reader = null;
@@ -35,6 +43,10 @@ public class App
     			  start = true;
     			  //initialize the game state
     			  
+    			     //initilaiz health;
+    			  health = 3;
+    			  
+    			  
     			  //scan for my role  (sheriff, deputy, outlaw, renegate)
     			  
     			  //
@@ -48,7 +60,7 @@ public class App
     		  
     		  while(start){
     		
-    			  
+    			 
     			  
     			  //read file for command to play the game
     			  action = line.split(",");
@@ -56,9 +68,16 @@ public class App
     			  if(action.length < 1){
     				  // something is wrong
     				  
-    			  }
+    			  }else if(action[0].equals("role")){
     			  
+    			  //check to see
     			  //
+    				  roles.add(action[1]);
+    				  
+    			  }else if(action[0].equals("b1")){
+    				  
+    			  }
+    			  else if(action[0].equals("b2"));
     		  }
     	   
     	  }
