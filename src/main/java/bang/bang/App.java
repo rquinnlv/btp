@@ -302,7 +302,14 @@ public class App
 			if (cBCard.equals("indians") || cBCard.equals("wellsfargo") || cBCard.equals("stagecoach")) {
 				play("card" + i);
 			}
-			if (cBCard.equals(")
+			if (health < 4) {
+				if (cBCard.equals("beer") || cBCard.equals("saloon")) {
+					play("beer" + i);
+				}
+				if (cBCard.equals("whiskey") || cBCard.equals("tequila")) {
+					play(String.valueOf("whiskey" + i + randomCard(i)));
+				}
+			}
 		}
 		
 		
