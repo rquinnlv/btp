@@ -98,16 +98,13 @@ public class App
 				if(action.length < 1){
 					// something is wrong
 
-					// set roles
-
-
-				}else if (action[0].equals("b3")) {
+				} else if (action[0].equals("b3")) {
 					/*
 					 * to do
 					 * add cards to correct hand
 					 */
 
-				}else if(action[0].equals("b1")){
+				} else if (action[0].equals("b1")){
 
 					/*
 					 * to do
@@ -123,8 +120,7 @@ public class App
 					 *  call py to announce my role
 					 */
 
-				}
-				else if(action[0].equals("b2"));
+				} else if (action[0].equals("b2"));
 
 				/*
 				 * to do 
@@ -144,6 +140,18 @@ public class App
 
 	}
 
+	public static void addToHand(int hand, String card) {
+		// resulted from b3 - used to add initial hand and general store cards
+	}
+	
+	public static void b1Button() {
+		
+	}
+	
+	public static void b2Button() {
+		
+	}
+	
 	public static void printSomething(int index) {
 		/*
 		 * This function has all the LED prints
