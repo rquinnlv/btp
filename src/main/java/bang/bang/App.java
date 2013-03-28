@@ -22,10 +22,10 @@ public class App
 	static int rangeGun = 1;
 	static int rangeOther = 0;
 	static int myRange = rangeGun + rangeOther;
-	static List <String>	roles =  new ArrayList();
-	static List <String>	hand =  new ArrayList();
-	static List <String> 	bHand = new ArrayList();
-	static List <GreenHand>	gHand =  new ArrayList();
+	static List <String>	roles =  new ArrayList<String>();
+	static List <String>	hand =  new ArrayList<String>();
+	static List <String> 	bHand = new ArrayList<String>();
+	static List <GreenHand>	gHand =  new ArrayList<GreenHand>();
 	static String myRole = "";
 	static int inHand = 0;
 	
@@ -173,9 +173,14 @@ public class App
 	public static void b3Button() {
 		// see excel sheet B3 table
 		String print = new String();
+		String currentCard = new String();
+		
+		for (int i = 0; i < bHand.size(); i++)
+			currentCard = bHand.get(i);
+		
 		int playerIndex = choosePlayerIndex(rangeOther);
 		
-		//for (int i = 0; i < bHand.size(); i++)
+		//
 			
 		
 //		switch (card) {
