@@ -24,7 +24,7 @@ public class App
 	static List <String>	hand =  new ArrayList();
 	static List <GreenHand>	gHand =  new ArrayList();
 	static String myRole = "";
-	static int inHand;
+	static int inHand = 0;
 	
 	public static void main( String[] args )
 	{
@@ -157,8 +157,10 @@ public class App
 		// resulted from b3 - used to add initial hand and general store cards
 		switch (handType) {
 		case 1: hand.add(card);
+				inHand++;
 		case 2:	GreenHand tmp = new GreenHand(card);
 				gHand.add(tmp);
+				inHand++;
 		default: break;
 		}
 	}
