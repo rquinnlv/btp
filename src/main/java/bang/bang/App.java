@@ -353,26 +353,25 @@ public class App
 		
 		
 		int index = rnd.nextInt(Math.abs(range));
-		if (index == 0) index++;
+		if (index == 0) 
+			index++;
 		int sheriff = findSheriff();
 		
-		switch (1) {
-		case 1:	break;
-		case 2:	if (roles.get(index).equals("sheriff") && roles.size() > 2)
-								index = choosePlayerIndex(range);
-							break;
-		
-		case 3: 
-		case 4:	if (roles.get(index).equals("sheriff"))
-							index = choosePlayerIndex(range);
-							break;
-		case 5:
-		case 6:
-		case 7:	if (sheriff <= myRange)
-							index = sheriff;
-						else
-							break;
-		default: break;
+//		if (myRole.equals("sheriff")) {
+//			return index;
+//		}
+//		else 
+		if (myRole.equals("renegade")) {
+			if (roles.get(index).equals("sheriff") && roles.size() > 2)
+			index = choosePlayerIndex(range);
+		}
+		else if (myRole.equals("deputy1") || myRole.equals("deputy2")) {
+			if (roles.get(index).equals("sheriff"))
+				index = choosePlayerIndex(range);
+		}
+		else if (myRole.equals("outlaw1") || myRole.equals("outlaw2") || myRole.equals("outlaw3")) {
+			if (sheriff <= myRange)
+				index = sheriff;
 		}
 		if (direction == 1)
 			return Math.abs(roles.size() - index);
