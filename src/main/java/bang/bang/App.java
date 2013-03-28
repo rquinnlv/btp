@@ -94,7 +94,8 @@ public class App
 					 * to do
 					 * add cards to correct hand
 					 */
-
+					b3Button(action[2]);
+					
 				} else if (action[0].equals("b1")){
 
 					/*
@@ -150,7 +151,7 @@ public class App
 		// resulted from b3 - used to add initial hand and general store cards
 	}
 	
-	public static void b1Button(String Card) {
+	public static void b3Button(String Card) {
 		
 	}
 	
