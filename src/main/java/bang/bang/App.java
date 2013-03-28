@@ -22,9 +22,9 @@ public class App
 	static int rangeOther = 0;
 	static List <String>	roles =  new ArrayList();
 	static List <String>	hand =  new ArrayList();
-	static List <String>	gHand =  new ArrayList();
-	static List <Integer>	gHandActive =  new ArrayList();
+	static List <GreenHand>	gHand =  new ArrayList();
 	static String myRole = "";
+	static int inHand;
 	
 	public static void main( String[] args )
 	{
@@ -158,7 +158,6 @@ public class App
 		switch (handType) {
 		case 1:  hand.add(card);
 		case 2:  hand.add(card);
-				 gHandActive.add(0);
 		default: break;
 		}
 	}
