@@ -128,4 +128,27 @@ public class App
     	 } 
     	
     }
+    
+    public static void printSomething(int index) {
+    	/*
+    	 * This function has all the LED prints
+    	 * in a nice switch statement
+    	 */
+    	switch (index) {
+	        case 1:  // print
+	        case 2:  
+	        case 3:  
+	        case 4:  
+	        case 5:  
+	        case 6:  
+	        case 7:  
+	        case 8:  
+	        case 9:  
+	        case 10: 
+	        case 11: 
+	        case 12: 
+	                 break;
+	        default: break;
+    	}
+    }
 }
