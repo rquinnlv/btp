@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -16,17 +17,16 @@ public class App
 {
     public static void main( String[] args )
     {
-    	boolean start = false;
+    	boolean start = true;
     	
     	File file = new File("bang.txt");
     	int health = 0;
-    	ArrayList    roles =  new ArrayList();
+    	List    roles =  new ArrayList();
     	//card holders
-    	String colorOfCard = "";
-    	String B1 = "";
-    	String B2 = "";
-    	
-    	   	
+//    	String colorOfCard = "";
+//    	String B1 = "";
+//    	String B2 = "";
+    	   	   	
     	
     	BufferedReader reader = null;
 
@@ -35,52 +35,83 @@ public class App
     	  String line;
     	  String[] action;
 
+    	  
+    	  line = reader.readLine();
     	  //Read one line at a time, printing it.
-    	  while ((line = reader.readLine()) != null) {
-    		  if(line.contains("start"))
-    		  {
-    			  
+    	  while (start) {
+    		  
+    		
+    		  if(line.equals("start"))
+    		  {  			  
     			  start = true;
-    			  //initialize the game state
+    			  /*
+    			   *  To do
+    			   *  initialize the game state
+    			   */
     			  
-    			     //initilaiz health;
-    			  health = 3;
+    			   //initilaiz health;
+    			   health = 3;
+    			     
     			  
-    			  
-    			  //scan for my role  (sheriff, deputy, outlaw, renegate)
-    			  
-    			  //
-    			  
+    			
     		  }
-    		  else
+    		  else if(line.equals("end"))
     		  {
     			  
     			  start = false;
     		  }
     		  
-    		  while(start){
+    		  
+    		  // close file and wait for new input
+    		  try {
+  				    reader.close();
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
     		
-    			 
+    			  reader = new BufferedReader(new FileReader(file));  	
     			  
+    			  line = reader.readLine();
+    			
     			  //read file for command to play the game
     			  action = line.split(",");
     			  
     			  if(action.length < 1){
     				  // something is wrong
     				  
+    				  // set roles
     			  }else if(action[0].equals("role")){
-    			  
-    			  //check to see
-    			  //
+    				  /*
+        			   * to do
+        			   * scan for my role  (sheriff, deputy, outlaw, renegate)
+        			   */
+        			 
     				  roles.add(action[1]);
+    				  
+        			  /*
+        			   *  to do
+        			   *  call py to announce my role
+        			   */
+    				  
     				  
     			  }else if(action[0].equals("b1")){
     				  
+    				  /*
+    				   * to do
+    				   * play b1 stuff
+    				   */
+    				  
     			  }
     			  else if(action[0].equals("b2"));
-    		  }
-    	   
-    	  }
+    			  
+    			    /*
+    			     * to do 
+    			     * play b2 stuff
+    			     */
+    			     			     			      			  
+    		  }    		    		  
     	  
     	 
     	 } catch (IOException e) {
