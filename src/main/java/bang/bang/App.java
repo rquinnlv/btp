@@ -302,6 +302,7 @@ public class App
 			if (cBCard.equals("indians") || cBCard.equals("wellsfargo") || cBCard.equals("stagecoach")) {
 				play("card" + i);
 			}
+			if (cBCard.equals(")
 		}
 		
 		
