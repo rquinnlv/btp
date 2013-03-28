@@ -27,7 +27,7 @@ public class App
 		List <String>	hand =  new ArrayList();
 		List <String>	gHand =  new ArrayList();
 		List <Boolean>	gHandActive =  new ArrayList();
-		String myRole = new String();
+		String myRole = "";
 		//card holders
 		//    	String colorOfCard = "";
 		//    	String B1 = "";
@@ -55,18 +55,9 @@ public class App
 					 *  initialize the game state
 					 */			   
 
-					// Read for b1 - and set my role
-					// continue reading b1 - set other roles
-
-					// on b2 - scan hand
-					// on consecutive b2's - add more to hand
-
-					// on B1 print announcement 
-
-
 					//Initilaize Myself;
 					health = 4;
-					myRole = roles.get(0);
+					
 
 				}
 				else if(line.equals("end"))
@@ -112,13 +103,14 @@ public class App
 					 * If role card
 					 * scan for roles (sheriff, deputy, outlaw, renegate)
 					 */
-
-					roles.add(action[2]);
-
-					/*
-					 *  to do
-					 *  call py to announce my role
-					 */
+					if (action[1].equals("role")) {						
+						roles.add(action[2]);
+						if(myRole.equals("")) {
+							myRole = roles.get(0);
+							if (myRole.equals("s"))
+								printSomething(1); // announce myself if sheriff
+						}
+					}
 
 				} else if (action[0].equals("b2"));
 
