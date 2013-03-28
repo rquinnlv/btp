@@ -125,7 +125,7 @@ public class App
 						System.out.print("starting a new game...  role has been set");
 					}
 					else { // Add to hand
-						if (action[1].equals("green"))
+						if (action[1].equals("gren"))
 							addToHand(3, action[2]);
 						else if (action[1].equals("blue"))
 							addToHand(2, action[2]);
