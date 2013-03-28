@@ -170,7 +170,7 @@ public class App
 	public static void b3Button() {
 		// see excel sheet B3 table
 		String print = new String();
-		int playerIndex = choosePlayer(rangeOther);
+		int playerIndex = choosePlayerIndex(rangeOther);
 		
 		
 		
@@ -190,7 +190,7 @@ public class App
 		}
 	}
 	
-	public int choosePlayerIndex(int range) {
+	public static int choosePlayerIndex(int range) {
 		/*
 		 * Sheriff: shoot all
 		 * Outlaw: shoot sheriff if in range, else random
