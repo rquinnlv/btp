@@ -17,7 +17,7 @@ public class App
 {
 	
 	String[] print;
-	Random rnd = new Random();
+	static Random rnd = new Random();
 	static int health = 0;
 	static int rangeGun = 1;
 	static int rangeOther = 0;
@@ -99,7 +99,7 @@ public class App
 					 * to do
 					 * add cards to correct hand
 					 */
-					b3Button(action[2]);
+					b3Button();
 					
 				} else if (action[0].equals("b1")){
 
@@ -223,7 +223,7 @@ public class App
 		return index;
 	}
 	
-	public int findSheriff () {
+	public static int findSheriff () {
 		for (int i = 0; i < roles.size(); i++)
 			if (roles.get(i).equals("sheriff"))
 				return i;
