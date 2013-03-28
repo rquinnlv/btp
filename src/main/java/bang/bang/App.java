@@ -117,7 +117,7 @@ public class App
 						roles.add(action[2]);
 						if(myRole.equals("")) {
 							myRole = roles.get(0);
-							if (myRole.equals("s"))
+							if (myRole.equals("sheriff"))
 								printSomething(1); // announce myself if sheriff
 						}
 						
@@ -180,11 +180,29 @@ public class App
 		// see excel sheet B3 table
 		String print = new String();
 		String currentCard = new String();
+		int playerIndex;
+		int sheriffPos = findSheriff();
 		
-		for (int i = 0; i < bHand.size(); i++)
+		for (int i = 0; i < bHand.size(); i++) {
 			currentCard = bHand.get(i);
+			if (currentCard.equals("jail")) {
+				do
+					playerIndex = choosePlayerIndex(roles.size());
+				while (playerIndex != sheriffPos);
+			}
+			if (currentCard.equals("dynamite")) {
+				playerIndex = choosePlayerIndex(roles.size());
+			}
+			if (currentCard.equals("binocular") || currentCard.equals("scope"))
+				play("Card: " + i);
+			if (currentCard.equals(""))
+			if (currentCard.equals("volcanic")) {
+				if (sheriffPos <= 1)
+					play("Card: " + i);
+			}
+		}
 		
-		int playerIndex = choosePlayerIndex(rangeOther);
+		
 		
 		//
 			
@@ -217,7 +235,15 @@ public class App
 		 * Renegade: shoot all except sheriff, sheriff last
 		 * 
 		 */
-		int index = rnd.nextInt(Math.abs(roles.size() - range));
+		int sheriffPos = findSheriff();
+		int direction = 0; // 0 = left, 1 = right
+		
+		if (!(sheriffPos == 0))
+			if (((double)sheriffPos/(double)roles.size()) > 0.5)
+				direction = 1;
+		
+		
+		int index = rnd.nextInt(Math.abs(range));
 		if (index == 0) index++;
 		int sheriff = findSheriff();
 		
@@ -239,7 +265,10 @@ public class App
 							break;
 		default: break;
 		}
-		return index;
+		if (direction == 1)
+			return Math.abs(roles.size() - index);
+		else
+			return index;
 	}
 	
 	public static int findSheriff () {
