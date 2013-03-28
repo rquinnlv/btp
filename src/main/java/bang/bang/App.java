@@ -51,12 +51,21 @@ public class App
     			  
     			   //initilaiz health;
     			   health = 3;
-    			     
-    			  
+    			   
+    			   // Read for b1 - and set my role
+    			   // continue reading b1 - set other roles
+    			   
+    			   // on b2 - scan hand
+    			   // on consecutive b2's - add more to hand
+    			   
+    			   // on B1 print announcement   			     			  
     			
     		  }
     		  else if(line.equals("end"))
-    		  {
+    		  {	  /*
+    			   *  To do
+    			   *  Cleanup
+    			   */
     			  
     			  start = false;
     		  }
@@ -82,13 +91,13 @@ public class App
     				  // something is wrong
     				  
     				  // set roles
-    			  }else if(action[0].equals("role")){
+    			  }else if(action[1].equals("role")){
     				  /*
         			   * to do
         			   * scan for my role  (sheriff, deputy, outlaw, renegate)
         			   */
         			 
-    				  roles.add(action[1]);
+    				  roles.add(action[2]);
     				  
         			  /*
         			   *  to do
@@ -100,7 +109,7 @@ public class App
     				  
     				  /*
     				   * to do
-    				   * play b1 stuff
+    				   * Add 2 cards to hand and play my turn
     				   */
     				  
     			  }
@@ -108,7 +117,7 @@ public class App
     			  
     			    /*
     			     * to do 
-    			     * play b2 stuff
+    			     * respond to card b2
     			     */
     			     			     			      			  
     		  }    		    		  
