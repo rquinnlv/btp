@@ -189,7 +189,7 @@ public class App
 			}
 			if (currentCard.equals("binocular") || currentCard.equals("scope"))
 				play("Card: " + i);
-			if (currentCard.equals(anObject))
+			if (currentCard.equals(""))
 			if (currentCard.equals("volcanic")) {
 				if (sheriffPos <= 1)
 					play("Card: " + i);
