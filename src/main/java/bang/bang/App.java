@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Random;
 
 
 /**
@@ -17,9 +17,11 @@ public class App
 {
 	
 	String[] print;
+	Random rnd = new Random();
 	static int health = 0;
 	static int rangeGun = 1;
 	static int rangeOther = 0;
+	static int myRange = rangeGun + rangeOther;
 	static List <String>	roles =  new ArrayList();
 	static List <String>	hand =  new ArrayList();
 	static List <GreenHand>	gHand =  new ArrayList();
@@ -168,7 +170,7 @@ public class App
 	public static void b3Button(String card) {
 		// see excel sheet B3 table
 		switch (card) {
-		case "panic":
+		case "panic":	
 			break;
 		default: break;
 		}
@@ -181,6 +183,46 @@ public class App
 			break;
 		default: break;
 		}
+	}
+	
+	public int choosePlayerIndex() {
+		/*
+		 * Sheriff: shoot all
+		 * Outlaw: shoot sheriff if in range, else random
+		 * Deputy: shoot all except sheriff
+		 * Renegade: shoot all except sheriff, sheriff last
+		 * 
+		 */
+		int index = rnd.nextInt(Math.abs(roles.size() - myRange));
+		if (index == 0) index++;
+		int sheriff = findSheriff();
+		
+		switch (myRole) {
+		case "sheriff":	break;
+		case "renegade":	if (roles.get(index).equals("sheriff") && roles.size() > 2)
+								index = choosePlayerIndex();
+							break;
+		
+		case "deputy1": 
+		case "deputy2":	if (roles.get(index).equals("sheriff"))
+							index = choosePlayerIndex();
+							break;
+		case "outlaw1":
+		case "outlaw2":
+		case "outlaw3":	if (sheriff <= myRange)
+							index = sheriff;
+						else
+							break;
+		default: break;
+		}
+		return index;
+	}
+	
+	public int findSheriff () {
+		for (int i = 0; i < roles.size(); i++)
+			if (roles.get(i).equals("sheriff"))
+				return i;
+		return 0;
 	}
 	
 	public static void printSomething(int index) {
