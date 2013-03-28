@@ -174,11 +174,14 @@ public class App
 		// see excel sheet B3 table
 		String print = new String();
 		String currentCard = new String();
+		int playerIndex;
 		
 		for (int i = 0; i < bHand.size(); i++)
 			currentCard = bHand.get(i);
+			if (currentCard.equals("jail"))
+				playerIndex = choosePlayerIndex(0);
 		
-		int playerIndex = choosePlayerIndex(rangeOther);
+		
 		
 		//
 			
@@ -211,7 +214,15 @@ public class App
 		 * Renegade: shoot all except sheriff, sheriff last
 		 * 
 		 */
-		int index = rnd.nextInt(Math.abs(roles.size() - range));
+		int sheriffPos = findSheriff();
+		int direction = 0; // 0 = left, 1 = right
+		
+		if (!(sheriffPos == 0))
+			if (((double)sheriffPos/(double)roles.size()) > 0.5)
+				direction = 1;
+		
+		
+		int index = rnd.nextInt(Math.abs(range));
 		if (index == 0) index++;
 		int sheriff = findSheriff();
 		
@@ -233,7 +244,10 @@ public class App
 							break;
 		default: break;
 		}
-		return index;
+		if (direction == 1)
+			return Math.abs(roles.size() - index);
+		else
+			return index;
 	}
 	
 	public static int findSheriff () {
