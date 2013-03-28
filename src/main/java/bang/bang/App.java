@@ -114,7 +114,7 @@ public class App
 						roles.add(action[2]);
 						if(myRole.equals("")) {
 							myRole = roles.get(0);
-							if (myRole.equals("s"))
+							if (myRole.equals("sheriff"))
 								printSomething(1); // announce myself if sheriff
 						}
 					}
@@ -175,11 +175,26 @@ public class App
 		String print = new String();
 		String currentCard = new String();
 		int playerIndex;
+		int sheriffPos = findSheriff();
 		
-		for (int i = 0; i < bHand.size(); i++)
+		for (int i = 0; i < bHand.size(); i++) {
 			currentCard = bHand.get(i);
-			if (currentCard.equals("jail"))
-				playerIndex = choosePlayerIndex(0);
+			if (currentCard.equals("jail")) {
+				do
+					playerIndex = choosePlayerIndex(roles.size());
+				while (playerIndex != sheriffPos);
+			}
+			if (currentCard.equals("dynamite")) {
+				playerIndex = choosePlayerIndex(roles.size());
+			}
+			if (currentCard.equals("binocular") || currentCard.equals("scope"))
+				play("Card: " + i);
+			if (currentCard.equals(anObject))
+			if (currentCard.equals("volcanic")) {
+				if (sheriffPos <= 1)
+					play("Card: " + i);
+			}
+		}
 		
 		
 		
