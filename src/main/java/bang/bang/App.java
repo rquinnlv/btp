@@ -167,13 +167,18 @@ public class App
 		}
 	}
 	
-	public static void b3Button(String card) {
+	public static void b3Button() {
 		// see excel sheet B3 table
-		switch (card) {
-		case "panic":	
-			break;
-		default: break;
-		}
+		String print = new String();
+		int playerIndex = choosePlayer(rangeOther);
+		
+		
+		
+//		switch (card) {
+//		case "panic":	
+//			break;
+//		default: break;
+//		}
 	}
 	
 	public static void b2Button(String card) {
