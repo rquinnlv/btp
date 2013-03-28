@@ -8,11 +8,10 @@ public class GreenHand {
 	int active;
 	boolean inPlay;
 	
-	public void GreenHand(String card) {
+	public GreenHand(String card) {
 		Card = card;
 		active = 0;
-		inPlay = false;
-	}
+		inPlay = false;	}
 	
 	public Boolean isPlayable(){
 		return active > 0;

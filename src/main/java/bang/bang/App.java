@@ -156,8 +156,9 @@ public class App
 	public static void addToHand(int handType, String card) {
 		// resulted from b3 - used to add initial hand and general store cards
 		switch (handType) {
-		case 1:  hand.add(card);
-		case 2:  hand.add(card);
+		case 1: hand.add(card);
+		case 2:	GreenHand tmp = new GreenHand(card);
+				gHand.add(tmp);
 		default: break;
 		}
 	}
