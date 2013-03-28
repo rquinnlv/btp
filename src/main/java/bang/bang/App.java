@@ -15,19 +15,22 @@ import java.util.List;
  */
 public class App
 {
+	
+	
+	static int health = 0;
+	static int rangeGun = 1;
+	static int rangeOther = 0;
+	static List <String>	roles =  new ArrayList();
+	static List <String>	hand =  new ArrayList();
+	static List <String>	gHand =  new ArrayList();
+	static List <Integer>	gHandActive =  new ArrayList();
+	static String myRole = "";
+	
 	public static void main( String[] args )
 	{
 		boolean start = true;
-
 		File file = new File("bang.txt");
-		int health = 0;
-		int rangeGun = 1;
-		int rangeOther = 0;
-		List <String>	roles =  new ArrayList();
-		List <String>	hand =  new ArrayList();
-		List <String>	gHand =  new ArrayList();
-		List <Boolean>	gHandActive =  new ArrayList();
-		String myRole = "";
+		
 		//card holders
 		//    	String colorOfCard = "";
 		//    	String B1 = "";
@@ -129,7 +132,10 @@ public class App
 				 * Update player death
 				 */
 				if (action[1].equals("role")) {						
-					//roles.remove(action[2]);
+					for (int i = 0; i < roles.size(); i++) {
+						if (roles.get(i).equals(action[2]))
+							roles.remove(i);
+					}
 					
 					printSomething(1); // Smack Talk dead person
 					
@@ -147,12 +153,12 @@ public class App
 
 	}
 
-	public static void addToHand(int hand, String card) {
+	public static void addToHand(int handType, String card) {
 		// resulted from b3 - used to add initial hand and general store cards
-		switch (hand) {
-		case 1:  // print
-		case 2:  
-			break;
+		switch (handType) {
+		case 1:  hand.add(card);
+		case 2:  hand.add(card);
+				 gHandActive.add(0);
 		default: break;
 		}
 	}
