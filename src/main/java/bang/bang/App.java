@@ -24,6 +24,7 @@ public class App
 	static int myRange = rangeGun + rangeOther;
 	static List <String>	roles =  new ArrayList();
 	static List <String>	hand =  new ArrayList();
+	static List <String> 	bHand = new ArrayList();
 	static List <GreenHand>	gHand =  new ArrayList();
 	static String myRole = "";
 	static int inHand = 0;
@@ -119,9 +120,12 @@ public class App
 					}
 					else { // Add to hand
 						if (action[1].equals("green"))
+							addToHand(3, action[2]);
+						else if (action[1].equals("blue"))
 							addToHand(2, action[2]);
-						else
+						else 
 							addToHand(1, action[2]);
+						inHand++;
 					}
 					
 
@@ -188,6 +192,10 @@ public class App
 			break;
 		default: break;
 		}
+	}
+	
+	public static void play(String str) {
+		
 	}
 	
 	public static int choosePlayerIndex(int range) {
