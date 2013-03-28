@@ -16,7 +16,7 @@ import java.util.List;
 public class App
 {
 	
-	
+	String[] print;
 	static int health = 0;
 	static int rangeGun = 1;
 	static int rangeOther = 0;
@@ -168,7 +168,7 @@ public class App
 	public static void b3Button(String card) {
 		// see excel sheet B3 table
 		switch (card) {
-		case "card":
+		case "panic":
 			break;
 		default: break;
 		}
