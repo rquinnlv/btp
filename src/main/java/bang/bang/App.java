@@ -112,10 +112,8 @@ public class App
 					/*
 					 * to do
 					 * Add 2 cards to hand and play my turn
-					 */
-					/*
-					 * to do
-					 * scan for my role  (sheriff, deputy, outlaw, renegate)
+					 * If role card
+					 * scan for roles (sheriff, deputy, outlaw, renegate)
 					 */
 
 					roles.add(action[2]);
@@ -131,18 +129,11 @@ public class App
 				/*
 				 * to do 
 				 * respond to card b2
-				 */
-				/*
-				 * to do
-				 * scan for my role  (sheriff, deputy, outlaw, renegate)
+				 * if role
+				 * Update player death
 				 */
 
 				roles.remove(action[2]);
-
-				/*
-				 *  to do
-				 *  call py to announce my role
-				 */
 
 			}    		    		  
 
