@@ -253,7 +253,7 @@ public class App
 			if (currentGreen.isActive()) {	
 				if (cGCard.equals("contestoga") || cGCard.equals("cancan") || cGCard.equals("pepperbox")
 						|| cGCard.equals("howitzer") || cGCard.equals("buffalorifle") || cGCard.equals("knife")
-						|| cGCard.equals("springfield")) {
+						|| cGCard.equals("derringer")) {
 					play(String.valueOf(i + choosePlayerIndex(myRange)));
 				}
 				if (cGCard.equals("canteen") && health < 4)
@@ -282,7 +282,19 @@ public class App
 				play(String.valueOf(i + choosePlayerIndex(roles.size())));
 			}
 			if (cBCard.equals("bang")) {
-				
+				play(String.valueOf(i + choosePlayerIndex(myRange)));
+			}
+			if (cBCard.equals("gatling")) {
+				play("gatling" + i + choosePlayerIndex(myRange));
+			}
+			if (cBCard.equals("punch")) {
+				play(String.valueOf(i + choosePlayerIndex(rangeOther)));
+			}
+			if (cBCard.equals("springfield") || cBCard.equals("duel")) {
+				play(String.valueOf(i + randomCard(i) + choosePlayerIndex(roles.size())));
+			}
+			if (cBCard.equals("indians") || cBCard.equals("wellsfargo") || cBCard.equals("stagecoach")) {
+				play("card" + i);
 			}
 		}
 		
