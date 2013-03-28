@@ -64,7 +64,7 @@ public class App
 
 					//Initilaize Myself;
 					health = 4;
-					
+					System.out.print("start command: ");
 
 				}
 				else if(line.equals("end"))
@@ -74,6 +74,7 @@ public class App
 				 */
 
 					start = false;
+					System.out.print("end command");
 				}
 
 
@@ -103,6 +104,8 @@ public class App
 					 */
 					b3Button(action[1]);
 					
+					System.out.print("b3 command");
+					
 				} else if (action[0].equals("b1")){
 
 					/*
@@ -118,6 +121,8 @@ public class App
 							if (myRole.equals("sheriff"))
 								printSomething(1); // announce myself if sheriff
 						}
+						
+						System.out.print("starting a new game...  role has been set");
 					}
 					else { // Add to hand
 						if (action[1].equals("green"))
@@ -145,6 +150,7 @@ public class App
 					
 					printSomething(1); // Smack Talk dead person
 					
+					System.out.print("someone is finished");
 				}
 				else { // Respond!
 					b2Button(action[2]);
@@ -319,8 +325,8 @@ public class App
 	
 	public static void b2Button(String card) {
 		// see excel sheet B2 table
-		switch (card) {
-		case "card":
+		switch (1) {
+		case 1:
 			break;
 		default: break;
 		}
@@ -350,19 +356,19 @@ public class App
 		if (index == 0) index++;
 		int sheriff = findSheriff();
 		
-		switch (myRole) {
-		case "sheriff":	break;
-		case "renegade":	if (roles.get(index).equals("sheriff") && roles.size() > 2)
+		switch (1) {
+		case 1:	break;
+		case 2:	if (roles.get(index).equals("sheriff") && roles.size() > 2)
 								index = choosePlayerIndex(range);
 							break;
 		
-		case "deputy1": 
-		case "deputy2":	if (roles.get(index).equals("sheriff"))
+		case 3: 
+		case 4:	if (roles.get(index).equals("sheriff"))
 							index = choosePlayerIndex(range);
 							break;
-		case "outlaw1":
-		case "outlaw2":
-		case "outlaw3":	if (sheriff <= myRange)
+		case 5:
+		case 6:
+		case 7:	if (sheriff <= myRange)
 							index = sheriff;
 						else
 							break;
