@@ -185,7 +185,7 @@ public class App
 		}
 	}
 	
-	public int choosePlayerIndex() {
+	public int choosePlayerIndex(int range) {
 		/*
 		 * Sheriff: shoot all
 		 * Outlaw: shoot sheriff if in range, else random
@@ -193,19 +193,19 @@ public class App
 		 * Renegade: shoot all except sheriff, sheriff last
 		 * 
 		 */
-		int index = rnd.nextInt(Math.abs(roles.size() - myRange));
+		int index = rnd.nextInt(Math.abs(roles.size() - range));
 		if (index == 0) index++;
 		int sheriff = findSheriff();
 		
 		switch (myRole) {
 		case "sheriff":	break;
 		case "renegade":	if (roles.get(index).equals("sheriff") && roles.size() > 2)
-								index = choosePlayerIndex();
+								index = choosePlayerIndex(range);
 							break;
 		
 		case "deputy1": 
 		case "deputy2":	if (roles.get(index).equals("sheriff"))
-							index = choosePlayerIndex();
+							index = choosePlayerIndex(range);
 							break;
 		case "outlaw1":
 		case "outlaw2":
