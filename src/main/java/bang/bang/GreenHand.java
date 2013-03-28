@@ -13,7 +13,11 @@ public class GreenHand {
 		active = 0;
 		inPlay = false;	}
 	
-	public Boolean isPlayable(){
+	public String getCard() {
+		return Card;
+	}
+	
+	public Boolean isActive(){
 		return active > 0;
 	}
 	

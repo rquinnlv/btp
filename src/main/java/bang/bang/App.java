@@ -28,6 +28,7 @@ public class App
 	static List <GreenHand>	gHand =  new ArrayList<GreenHand>();
 	static String myRole = "";
 	static int inHand = 0;
+	static boolean isVolcanic = false;
 	
 	public static void main( String[] args )
 	{
@@ -100,7 +101,7 @@ public class App
 					 * to do
 					 * add cards to correct hand
 					 */
-					b3Button();
+					b3Button(action[1]);
 					
 				} else if (action[0].equals("b1")){
 
@@ -170,15 +171,33 @@ public class App
 		}
 	}
 	
-	public static void b3Button() {
+	public static void b3Button(String card) {
 		// see excel sheet B3 table
 		String print = new String();
 		String currentCard = new String();
 		int playerIndex;
 		int sheriffPos = findSheriff();
 		
+		if (card.equals("jail"))
+			play("miss turn");
+		if (card.equals("dynamite")) {
+			health = health - 3;
+			if (health <=0) {
+				for (int i = 0; i < bHand.size(); i++) {
+					currentCard = hand.get(i);
+					if (currentCard.equals("beer")) {
+						play("still alive");
+						break;
+					}
+				}	
+			}
+			else
+				play("ouch!!!");
+		}
+		
 		for (int i = 0; i < bHand.size(); i++) {
 			currentCard = bHand.get(i);
+			
 			if (currentCard.equals("jail")) {
 				do
 					playerIndex = choosePlayerIndex(roles.size());
@@ -187,12 +206,83 @@ public class App
 			if (currentCard.equals("dynamite")) {
 				playerIndex = choosePlayerIndex(roles.size());
 			}
-			if (currentCard.equals("binocular") || currentCard.equals("scope"))
+			if (currentCard.equals("binocular") || currentCard.equals("scope")) {
+				rangeOther++;
 				play("Card: " + i);
-			if (currentCard.equals(""))
+			}
+			if (currentCard.equals("barrel") || currentCard.equals("hideout") || currentCard.equals("mustang"))
+				play("Card: " + i);
+			if (currentCard.equals("schofield") && rangeGun < 2) {
+				rangeGun = 2;
+				play("Card: " + i);
+			}
+			if (currentCard.equals("remindton") && rangeGun < 3){
+				rangeGun = 3;
+				play("Card: " + i);
+			}
+			if (currentCard.equals("schofield") && rangeGun < 4){
+				rangeGun = 4;
+				play("Card: " + i);
+			}
+			if (currentCard.equals("schofield") && rangeGun < 5){
+				rangeGun = 5;
+				play("Card: " + i);
+			}
 			if (currentCard.equals("volcanic")) {
-				if (sheriffPos <= 1)
+				if (!(myRole.contains("outlaw") && sheriffPos > 1)) {
+					rangeGun = 1;
+					isVolcanic = true;
 					play("Card: " + i);
+				}
+			}
+		}
+		
+		for (int i = 0; i < gHand.size(); i++) {
+			GreenHand currentGreen = gHand.get(i);
+			
+			if (currentGreen.isInPlay() && !currentGreen.isActive()) {
+				currentGreen.activate();
+				gHand.set(i,currentGreen);
+			}
+		}
+		
+		for (int i = 0; i < gHand.size(); i++) {
+			GreenHand currentGreen = gHand.get(i);	
+			String cGCard = currentGreen.getCard();
+			
+			if (currentGreen.isActive()) {	
+				if (cGCard.equals("contestoga") || cGCard.equals("cancan") || cGCard.equals("pepperbox")
+						|| cGCard.equals("howitzer") || cGCard.equals("buffalorifle") || cGCard.equals("knife")
+						|| cGCard.equals("springfield")) {
+					play(String.valueOf(i + choosePlayerIndex(myRange)));
+				}
+				if (cGCard.equals("canteen") && health < 4)
+					play("canteen heal");
+				if (cGCard.equals("ponyexpress"))
+						play("ponyexpress" + i);
+			}
+			
+			if (!currentGreen.isInPlay()) {
+				currentGreen.play();
+				gHand.set(i,currentGreen);
+				play("green card" + i);
+			}
+		}
+		
+		for (int i = 0; i < hand.size(); i++) {
+			String cBCard = hand.get(i);
+			
+			if (cBCard.equals("panic")) {
+				play(String.valueOf(i + choosePlayerIndex(rangeOther)));
+			}
+			if (cBCard.equals("ragtime") || cBCard.equals("brawl")) {
+				play(String.valueOf(i + randomCard(i) + choosePlayerIndex(rangeOther)));
+			}
+			if (cBCard.equals("catbalou")) {
+				play(String.valueOf(i + choosePlayerIndex(roles.size())));
+			}
+			if (cBCard.equals("bang")) {
+				
 			}
 		}
 		
@@ -206,6 +296,13 @@ public class App
 //			break;
 //		default: break;
 //		}
+	}
+	
+	public static int randomCard(int index) {
+		int rand = rnd.nextInt(hand.size());
+		if (rand == index)
+			rand = randomCard(index);
+		return rand;
 	}
 	
 	public static void b2Button(String card) {
