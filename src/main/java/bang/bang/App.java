@@ -21,7 +21,13 @@ public class App
     	
     	File file = new File("bang.txt");
     	int health = 0;
-    	List    roles =  new ArrayList();
+    	int rangeGun = 1;
+    	int rangeOther = 0;
+    	List <String>	roles =  new ArrayList();
+    	List <String>	hand =  new ArrayList();
+    	List <String>	gHand =  new ArrayList();
+    	List <Boolean>	gHandActive =  new ArrayList();
+    	String myRole = new String();
     	//card holders
 //    	String colorOfCard = "";
 //    	String B1 = "";
@@ -47,10 +53,7 @@ public class App
     			  /*
     			   *  To do
     			   *  initialize the game state
-    			   */
-    			  
-    			   //initilaiz health;
-    			   health = 3;
+    			   */			   
     			   
     			   // Read for b1 - and set my role
     			   // continue reading b1 - set other roles
@@ -58,7 +61,11 @@ public class App
     			   // on b2 - scan hand
     			   // on consecutive b2's - add more to hand
     			   
-    			   // on B1 print announcement   			     			  
+    			   // on B1 print announcement 
+    			  
+    			   //Initilaize Myself;
+	   			   health = 4;
+	   			   myRole = roles.get(0);
     			
     		  }
     		  else if(line.equals("end"))
