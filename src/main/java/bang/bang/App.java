@@ -111,6 +111,13 @@ public class App
 								printSomething(1); // announce myself if sheriff
 						}
 					}
+					else { // Add to hand
+						if (action[1].equals("green"))
+							addToHand(2, action[2]);
+						else
+							addToHand(1, action[2]);
+					}
+					
 
 				} else if (action[0].equals("b2"));
 
@@ -120,8 +127,15 @@ public class App
 				 * if role
 				 * Update player death
 				 */
-
-				roles.remove(action[2]);
+				if (action[1].equals("role")) {						
+					//roles.remove(action[2]);
+					
+					printSomething(1); // Smack Talk dead person
+					
+				}
+				else { // Respond!
+					b2Button(action[2]);
+				}
 
 			}    		    		  
 
@@ -136,11 +150,11 @@ public class App
 		// resulted from b3 - used to add initial hand and general store cards
 	}
 	
-	public static void b1Button() {
+	public static void b1Button(String Card) {
 		
 	}
 	
-	public static void b2Button() {
+	public static void b2Button(String Card) {
 		
 	}
 	
