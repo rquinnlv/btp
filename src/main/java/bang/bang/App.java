@@ -152,11 +152,11 @@ public class App
 	}
 	
 	public static void b3Button(String Card) {
-		
+		// see excel sheet B3 table
 	}
 	
 	public static void b2Button(String Card) {
-		
+		// see excel sheet B2 table
 	}
 	
 	public static void printSomething(int index) {
