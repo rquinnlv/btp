@@ -125,7 +125,6 @@ public class App
 							addToHand(2, action[2]);
 						else 
 							addToHand(1, action[2]);
-						inHand++;
 					}
 					
 
@@ -176,7 +175,8 @@ public class App
 		String print = new String();
 		int playerIndex = choosePlayerIndex(rangeOther);
 		
-		
+		//for (int i = 0; i < bHand.size(); i++)
+			
 		
 //		switch (card) {
 //		case "panic":	
