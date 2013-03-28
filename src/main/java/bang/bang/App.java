@@ -149,14 +149,30 @@ public class App
 
 	public static void addToHand(int hand, String card) {
 		// resulted from b3 - used to add initial hand and general store cards
+		switch (hand) {
+		case 1:  // print
+		case 2:  
+			break;
+		default: break;
+		}
 	}
 	
-	public static void b3Button(String Card) {
+	public static void b3Button(String card) {
 		// see excel sheet B3 table
+		switch (card) {
+		case "card":
+			break;
+		default: break;
+		}
 	}
 	
-	public static void b2Button(String Card) {
+	public static void b2Button(String card) {
 		// see excel sheet B2 table
+		switch (card) {
+		case "card":
+			break;
+		default: break;
+		}
 	}
 	
 	public static void printSomething(int index) {
