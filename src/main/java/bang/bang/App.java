@@ -697,6 +697,7 @@ public class App
 			currentCard = bHand.get(i);
 			
 			if (currentCard.equals("jail")) {
+				System.out.println("playing blue, in jail logic");
 				do
 					playerIndex = choosePlayerIndex(roles.size());
 				while (playerIndex != sheriffPos);
