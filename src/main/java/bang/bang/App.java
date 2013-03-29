@@ -136,8 +136,9 @@ public class App
 						roles.add(action[2]);
 						if(myRole.equals("")) {
 							myRole = roles.get(0);
-							if (myRole.equals("sheriff"))
-								printSomething(1); // announce myself if sheriff
+							if (myRole.equals("sheriff")){
+								//printSomething(1); // announce myself if sheriff
+							}
 						}
 						
 						System.out.print("starting a new game...  role has been set");
@@ -166,7 +167,7 @@ public class App
 							roles.remove(i);
 					}
 					
-					printSomething(1); // Smack Talk dead person
+					//printSomething(1); // Smack Talk dead person
 					
 					System.out.print("someone is finished");
 				}
