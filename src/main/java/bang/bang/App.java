@@ -210,13 +210,13 @@ public class App
 				for (int i = 0; i < bHand.size(); i++) {
 					currentCard = hand.get(i);
 					if (currentCard.equals("beer")) {
-						play("Hand: " + i + " " +  printArray[1]);
+						play("Hand: " + i + " " +  printArray[17]);
 						break;
 					}
 				}	
 			}
 			else
-				play("ouch!!!");
+				play(printArray[56]);
 		}
 		
 		for (int i = 0; i < bHand.size(); i++) {
@@ -230,33 +230,37 @@ public class App
 			if (currentCard.equals("dynamite")) {
 				playerIndex = choosePlayerIndex(roles.size());
 			}
-			if (currentCard.equals("binocular") || currentCard.equals("scope")) {
+			if (currentCard.equals("binocular")) {
 				rangeOther++;
-				play("Hand: " + i);
+				play("Hand: " + i +  printArray[54]);
+			}
+			if (currentCard.equals("scope")) {
+				rangeOther++;
+				play("Hand: " + i +  printArray[53]);
 			}
 			if (currentCard.equals("barrel") || currentCard.equals("hideout") || currentCard.equals("mustang"))
 				play("Hand: " + i);
 			if (currentCard.equals("schofield") && rangeGun < 2) {
 				rangeGun = 2;
-				play("Hand: " + i);
+				play("Hand: " + i +  printArray[48]);
 			}
 			if (currentCard.equals("remindton") && rangeGun < 3){
 				rangeGun = 3;
-				play("Hand: " + i);
+				play("Hand: " + i +  printArray[49]);
 			}
 			if (currentCard.equals("schofield") && rangeGun < 4){
 				rangeGun = 4;
-				play("Hand: " + i);
+				play("Hand: " + i +  printArray[48]);
 			}
 			if (currentCard.equals("schofield") && rangeGun < 5){
 				rangeGun = 5;
-				play("Hand: " + i);
+				play("Hand: " + i +  printArray[49]);
 			}
 			if (currentCard.equals("volcanic")) {
 				if (!(myRole.contains("outlaw") && sheriffPos > 1)) {
 					rangeGun = 1;
 					isVolcanic = true;
-					play("Hand: " + i);
+					play("Hand: " + i +  printArray[66]);
 				}
 			}
 		}
@@ -278,18 +282,18 @@ public class App
 				if (cGCard.equals("contestoga") || cGCard.equals("cancan") || cGCard.equals("pepperbox")
 						|| cGCard.equals("howitzer") || cGCard.equals("buffalorifle") || cGCard.equals("knife")
 						|| cGCard.equals("derringer")) {
-					play(String.valueOf("Green Hand: " + i + " On player: " + choosePlayerIndex(myRange)));
+					play(String.valueOf("Green Hand: " + i + " On player: " + choosePlayerIndex(myRange)) +  printArray[25]);
 				}
 				if (cGCard.equals("canteen") && health < 4)
-					play("Green Hand: " + i);
+					play("Green Hand: " + i +  printArray[19]);
 				if (cGCard.equals("ponyexpress"))
-						play("Green Hand: " + i);
+						play("Green Hand: " + i +  printArray[14]);
 			}
 			
 			if (!currentGreen.isInPlay()) {
 				currentGreen.play();
 				gHand.set(i,currentGreen);
-				play("green card" + i);
+				play("green card" + i +  printArray[10]);
 			}
 		}
 		
@@ -297,35 +301,41 @@ public class App
 			String cBCard = hand.get(i);
 			
 			if (cBCard.equals("panic")) {
-				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)));
+				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[43]);
 			}
 			if (cBCard.equals("ragtime") || cBCard.equals("brawl")) {
-				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(rangeOther)));
+				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[44]);
 			}
 			if (cBCard.equals("catbalou")) {
-				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(roles.size())));
+				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(roles.size())) +  printArray[47]);
 			}
 			if (cBCard.equals("bang")) {
-				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(myRange)));
+				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(myRange)) +  printArray[28]);
 			}
 			if (cBCard.equals("gatling")) {
-				play("Hand: " + i + " On player: " + choosePlayerIndex(myRange));
+				play("Hand: " + i + " On player: " + choosePlayerIndex(myRange) +  printArray[29]);
 			}
 			if (cBCard.equals("punch")) {
-				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)));
+				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[30]);
 			}
 			if (cBCard.equals("springfield") || cBCard.equals("duel")) {
-				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(roles.size())));
+				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(roles.size())) +  printArray[8]);
 			}
 			if (cBCard.equals("indians") || cBCard.equals("wellsfargo") || cBCard.equals("stagecoach")) {
-				play("Hand: " +  + i);
+				play("Hand: " +  + i +  printArray[15]);
 			}
 			if (health < 4) {
-				if (cBCard.equals("beer") || cBCard.equals("saloon")) {
-					play("Hand: " + i);
+				if (cBCard.equals("beer")) {
+					play("Hand: " + i +  printArray[17]);
 				}
-				if (cBCard.equals("whiskey") || cBCard.equals("tequila")) {
-					play(String.valueOf("Hand: " + i + " and " + randomCard(i)));
+				if (cBCard.equals("saloon")) {
+					play("Hand: " + i +  printArray[18]);
+				}
+				if (cBCard.equals("whiskey")) {
+					play(String.valueOf("Hand: " + i + " and " + randomCard(i)) +  printArray[21]);
+				}
+				if (cBCard.equals("tequila")) {
+					play(String.valueOf("Hand: " + i + " and " + randomCard(i)) +  printArray[20]);
 				}
 			}
 		}
@@ -349,7 +359,7 @@ public class App
 	
 	public static void play(String str) {
 		try {
-			Runtime.getRuntime().exec("python scream.py " + str);
+			Runtime.getRuntime().exec("python scream.py \"" + str + "\"");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -405,27 +415,5 @@ public class App
 				return i;
 		return 0;
 	}
-	
-	public static void printSomething(int index) {
-		/*
-		 * This function has all the LED prints
-		 * in a nice switch statement
-		 */
-		switch (index) {
-		case 1:  // print
-		case 2:  
-		case 3:  
-		case 4:  
-		case 5:  
-		case 6:  
-		case 7:  
-		case 8:  
-		case 9:  
-		case 10: 
-		case 11: 
-		case 12: 
-			break;
-		default: break;
-		}
-	}
+
 }
