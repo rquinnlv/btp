@@ -887,9 +887,13 @@ public class App
 				playHand();
 			}
 			if (cBCard.equals("ragtime") || cBCard.equals("brawl")) {
-				hand.remove(i);
-				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(rangeOther)) + "--" + printArray[44]);
-				playHand();
+				if (hand.size() > 1) {					
+					hand.remove(i);
+					int second = randomCard();
+					hand.remove(second);					
+					play(String.valueOf("Hand: " + i + " and " + second + " (after shifting hand) On player: " + choosePlayerIndex(rangeOther)) + "--" + printArray[44]);
+					playHand();
+				}
 			}
 			if (cBCard.equals("cat")) {
 				hand.remove(i);
@@ -911,14 +915,33 @@ public class App
 				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)) + "--" + printArray[30]);
 				playHand();
 			}
-			if (cBCard.equals("springfield") || cBCard.equals("duel")) {
+			if (cBCard.equals("springfield")) {
+				if (hand.size() > 1) {					
+					hand.remove(i);
+					int second = randomCard();
+					hand.remove(second);					
+					play(String.valueOf("Hand: " + i + " and " + second + " (after shifting hand) On player: " + choosePlayerIndex(roles.size())) + "--" + printArray[8]);
+					playHand();
+				}
+			}
+			if (cBCard.equals("duel")) {
 				hand.remove(i);
-				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(roles.size())) + "--" + printArray[8]);
+				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(roles.size())) + "--" + printArray[24]);
 				playHand();
 			}
-			if (cBCard.equals("indians") || cBCard.equals("wellsfargo") || cBCard.equals("stagecoach")) {
+			if (cBCard.equals("indians")) {
+				hand.remove(i);
+				play("Hand: " +  + i + "--" + printArray[23]);
+				playHand();
+			}
+			if (cBCard.equals("wellsfargo")) {
 				hand.remove(i);
 				play("Hand: " +  + i + "--" + printArray[15]);
+				playHand();
+			}
+			if (cBCard.equals("stagecoach")) {
+				hand.remove(i);
+				play("Hand: " +  + i + "--" + printArray[16]);
 				playHand();
 			}
 			if (health < 4) {
@@ -933,23 +956,43 @@ public class App
 					playHand();
 				}
 				if (cBCard.equals("whiskey")) {
-					hand.remove(i);
-					play(String.valueOf("Hand: " + i + " and " + randomCard(i)) + "--" + printArray[21]);
-					playHand();
+					if (hand.size() > 1) {					
+						hand.remove(i);
+						int second = randomCard();
+						hand.remove(second);					
+						play(String.valueOf("Hand: " + i + " and " + second + " (after shifting hand)--" + printArray[21]));
+						playHand();
+					}
 				}
 				if (cBCard.equals("tequila")) {
-					hand.remove(i);
-					play(String.valueOf("Hand: " + i + " and " + randomCard(i)) + "--" + printArray[20]);
-					playHand();
+					if (hand.size() > 1) {					
+						hand.remove(i);
+						int second = randomCard();
+						hand.remove(second);					
+						play(String.valueOf("Hand: " + i + " and " + second + " (after shifting hand)--" + printArray[20]));
+						playHand();
+					}
 				}
 			}
 		}
 	}
 	
 	public static int randomCard(int index) {
-		int rand = rnd.nextInt(hand.size());
+		int min = 0;
+		int max = hand.size();
+		int rand = min + (int)(Math.random() * ((max - min) + 1));
+		
+//		int rand = rnd.nextInt(hand.size());
 		if (rand == index)
 			rand = randomCard(index);
+		return rand;
+	}
+	
+	public static int randomCard() {
+		int min = 0;
+		int max = hand.size();
+		int rand = min + (int)(Math.random() * ((max - min) + 1));
+
 		return rand;
 	}
 	
@@ -993,7 +1036,8 @@ public class App
 				direction = 1;
 		
 		
-		int index = rnd.nextInt(Math.abs(range));
+		//int index = rnd.nextInt(Math.abs(range));
+		int index = 0 + (int)(Math.random() * ((Math.abs(range) - 0) + 1));
 		if (index == 0) 
 			index++;
 		
