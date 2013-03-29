@@ -189,6 +189,7 @@ public class App
 				}
 				//read file for command to play the game
 				action = line.split(",");
+				System.out.println(action[0] + action[1] + action[2]);
 
 				if(action.length < 1){
 					// something is wrong
