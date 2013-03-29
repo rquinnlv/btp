@@ -57,16 +57,16 @@ while True:
 	if ( GPIO.input(25)== False ):
 		GPIO.output(GREEN_LED, False)
                 GPIO.output(RED_LED, True)
-		os.system("rm test.jpg")
-		os.system("fswebcam --save test.jpg")       
-		sleep(0.2)
-		os.system("zbarimg -q test.jpg > temp.txt")
-		a=open('temp.txt','r')
-		val=a.read()
-		b=val[8:]
-		a.close
-		#c=open('bang.txt','w')
-		print "b3,"+b.lower()
+#		os.system("rm test.jpg")
+#		os.system("fswebcam --save test.jpg")       
+#		sleep(0.2)
+#		os.system("zbarimg -q test.jpg > temp.txt")
+#		a=open('temp.txt','r')
+#		val=a.read()
+#		b=val[8:]
+#		a.close
+#		#c=open('bang.txt','w')
+#		print "b3,"+b.lower()
                 out='echo "b3,%s" > bang.txt' % "b3,b3"
                 print out
                 os.system(out)		
