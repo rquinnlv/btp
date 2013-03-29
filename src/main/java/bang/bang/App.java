@@ -746,53 +746,63 @@ public class App
 					playerIndex = choosePlayerIndex(roles.size());
 				while (playerIndex == sheriffPos);
 				bHand.remove(i);
-				play("Blue card " + i + " against player: " + playerIndex + "-" + printArray[57]);
+				play("Blue card " + i + " against player: " + playerIndex + "--" + printArray[57]);
 				playBlueHand();
 			}
 			if (currentCard.equals("dynamite")) {
 				//playerIndex = choosePlayerIndex(roles.size());
 				bHand.remove(i);
-				play("Blue card " + i + "-" + printArray[55]);
+				play("Blue card " + i + "--" + printArray[55]);
 				playBlueHand();
 			}
 			if (currentCard.equals("binocular")) {
 				rangeOther++;
 				bHand.remove(i);
-				play("Hand: " + i +  printArray[54]);
+				play("Hand: " + i + "--" + printArray[54]);
 				playBlueHand();
 			}
 			if (currentCard.equals("scope")) {
 				rangeOther++;
 				bHand.remove(i);
-				play("Hand: " + i +  printArray[53]);
+				play("Hand: " + i + "--" + printArray[53]);
 				playBlueHand();
 			}
-			if (currentCard.equals("barrel") || currentCard.equals("hideout") || currentCard.equals("mustang")) {
+			if (currentCard.equals("barrel")) {
 				bHand.remove(i);
-				play("Hand: " + i);
+				play("Hand: " + i + "--" + printArray[52]);
+				playBlueHand();
+			}
+			if (currentCard.equals("hideout")) {
+				bHand.remove(i);
+				play("Hand: " + i + "--" + printArray[51]);
+				playBlueHand();
+			}
+			if (currentCard.equals("mustang")) {
+				bHand.remove(i);
+				play("Hand: " + i + "--" + printArray[50]);
 				playBlueHand();
 			}
 			if (currentCard.equals("schofield") && rangeGun < 2) {
 				rangeGun = 2;
 				bHand.remove(i);
-				play("Hand: " + i +  printArray[48]);
+				play("Hand: " + i + "--" + printArray[48]);
 				playBlueHand();
 			}
 			if (currentCard.equals("remindton") && rangeGun < 3){
 				rangeGun = 3;
 				bHand.remove(i);
-				play("Hand: " + i +  printArray[49]);
+				play("Hand: " + i + "--" + printArray[49]);
 			}
 			if (currentCard.equals("schofield") && rangeGun < 4){
 				rangeGun = 4;
 				bHand.remove(i);
-				play("Hand: " + i +  printArray[48]);
+				play("Hand: " + i + "--" + printArray[48]);
 				playBlueHand();
 			}
 			if (currentCard.equals("schofield") && rangeGun < 5){
 				rangeGun = 5;
 				bHand.remove(i);
-				play("Hand: " + i +  printArray[49]);
+				play("Hand: " + i + "--" + printArray[49]);
 				playBlueHand();
 			}
 			if (currentCard.equals("volcanic")) {
@@ -800,7 +810,7 @@ public class App
 					rangeGun = 1;
 					isVolcanic = true;
 					bHand.remove(i);
-					play("Hand: " + i +  printArray[66]);
+					play("Hand: " + i + "--" + printArray[66]);
 					playBlueHand();
 				}
 			}
@@ -818,16 +828,16 @@ public class App
 				if (cGCard.equals("contestoga") || cGCard.equals("cancan") || cGCard.equals("pepperbox")
 						|| cGCard.equals("howitzer") || cGCard.equals("buffalorifle") || cGCard.equals("knife")
 						|| cGCard.equals("derringer")) {
-					play(String.valueOf("Green Hand: " + i + " On player: " + choosePlayerIndex(myRange)) +  printArray[25]);
+					play(String.valueOf("Green Hand: " + i + " On player: " + choosePlayerIndex(myRange)) + "--" + printArray[25]);
 				}
 				if (cGCard.equals("canteen") && health < 4) {
 					gHand.remove(i);
-					play("Green Hand: " + i +  printArray[19]);
+					play("Green Hand: " + i + "--" + printArray[19]);
 					playGreenHand();
 				}
 				if (cGCard.equals("ponyexpress")) {
 					gHand.remove(i);
-					play("Green Hand: " + i +  printArray[14]);
+					play("Green Hand: " + i + "--" + printArray[14]);
 					playGreenHand();
 				}
 			}
@@ -844,63 +854,63 @@ public class App
 			
 			if (cBCard.equals("panic")) {
 				hand.remove(i);
-				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[43]);
+				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)) +  "--" + printArray[43]);
 				playHand();
 			}
 			if (cBCard.equals("ragtime") || cBCard.equals("brawl")) {
 				hand.remove(i);
-				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[44]);
+				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(rangeOther)) + "--" + printArray[44]);
 				playHand();
 			}
 			if (cBCard.equals("cat")) {
 				hand.remove(i);
-				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(roles.size())) +  printArray[47]);
+				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(roles.size())) + "--" + printArray[47]);
 				playHand();
 			}
 			if (cBCard.equals("bang")) {
 				hand.remove(i);
-				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(myRange)) +  printArray[28]);
+				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(myRange)) + "--" + printArray[28]);
 				playHand();
 			}
 			if (cBCard.equals("gatling")) {
 				hand.remove(i);
-				play("Hand: " + i + " On player: " + choosePlayerIndex(myRange) +  printArray[29]);
+				play("Hand: " + i + " On player: " + choosePlayerIndex(myRange) + "--" + printArray[29]);
 				playHand();
 			}
 			if (cBCard.equals("punch")) {
 				hand.remove(i);
-				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[30]);
+				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)) + "--" + printArray[30]);
 				playHand();
 			}
 			if (cBCard.equals("springfield") || cBCard.equals("duel")) {
 				hand.remove(i);
-				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(roles.size())) +  printArray[8]);
+				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(roles.size())) + "--" + printArray[8]);
 				playHand();
 			}
 			if (cBCard.equals("indians") || cBCard.equals("wellsfargo") || cBCard.equals("stagecoach")) {
 				hand.remove(i);
-				play("Hand: " +  + i +  printArray[15]);
+				play("Hand: " +  + i + "--" + printArray[15]);
 				playHand();
 			}
 			if (health < 4) {
 				if (cBCard.equals("beer")) {
 					hand.remove(i);
-					play("Hand: " + i +  printArray[17]);
+					play("Hand: " + i + "--" + printArray[17]);
 					playHand();
 				}
 				if (cBCard.equals("saloon")) {
 					hand.remove(i);
-					play("Hand: " + i +  printArray[18]);
+					play("Hand: " + i + "--" + printArray[18]);
 					playHand();
 				}
 				if (cBCard.equals("whiskey")) {
 					hand.remove(i);
-					play(String.valueOf("Hand: " + i + " and " + randomCard(i)) +  printArray[21]);
+					play(String.valueOf("Hand: " + i + " and " + randomCard(i)) + "--" + printArray[21]);
 					playHand();
 				}
 				if (cBCard.equals("tequila")) {
 					hand.remove(i);
-					play(String.valueOf("Hand: " + i + " and " + randomCard(i)) +  printArray[20]);
+					play(String.valueOf("Hand: " + i + " and " + randomCard(i)) + "--" + printArray[20]);
 					playHand();
 				}
 			}
@@ -928,7 +938,11 @@ public class App
 			String tmp = str.replace(" ", "-");
 			Runtime.getRuntime().exec("python scream.py '" + tmp + "'");
 			System.out.println("python scream.py \"" + tmp + "\"");
+			Thread.sleep(5000);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
