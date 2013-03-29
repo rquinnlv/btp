@@ -150,9 +150,27 @@ public class App
 				 *  Cleanup
 				 */
 
+					roles = new ArrayList<String>();
+					hand =  new ArrayList<String>();
+					bHand = new ArrayList<String>();
+					gHand =  new ArrayList<GreenHand>();
+					myRole = "";
+					lastModifiedDate = 0L;
+					isVolcanic = false;
+					inHand = 0;
+					health = 4;
+					rangeGun = 1;
+					rangeOther = 0;
+					myRange = rangeGun + rangeOther;
+					lastCardPlayed = "";
+					isFirstStart = true;
+					isGameOver = false;
+					
+					
+					
 					//start = false;
-					System.out.println("Game over");
-					System.out.println("Remaining roles: " + roles);
+					System.out.println("Game over!!!");
+					
 				}
 
 
