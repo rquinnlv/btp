@@ -288,7 +288,8 @@ public class App
 				System.out.println("myrole: " + myRole);
 				System.out.println("roles: " + roles);
 				System.out.println("blue hands: " + bHand);
-				System.out.println("green hands: " + gHand.get(0).getCard());
+				for (int i = 0; i < gHand.size(); i++)
+					System.out.println("green hands: " + gHand.get(i).getCard());
 				System.out.println("health: " + health);
 
 			}    		    		  
