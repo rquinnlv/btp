@@ -904,10 +904,10 @@ public class App
 			index++;
 		int sheriff = findSheriff();
 		
-//		if (myRole.equals("sheriff")) {
-//			return index;
-//		}
-//		else 
+		if (myRole.equals("sheriff")) {
+			return index;
+		}
+		else 
 		if (myRole.equals("renegade")) {
 			if (roles.get(index).equals("sheriff") && roles.size() > 2)
 			index = choosePlayerIndex(range);
