@@ -96,6 +96,8 @@ public class App
 	static String lastCardPlayed = "";
 	static boolean isVolcanic = false;
 	static Long lastModifiedDate;
+	static boolean isFirstStart = true;
+	
 
 	
 	public static void main( String[] args )
@@ -123,7 +125,7 @@ public class App
 			while (start) {
 
 
-				if(line.equals("start"))
+				if(line.equals("start") || isFirstStart)
 				{  			  
 					start = true;
 					/*
