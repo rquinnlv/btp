@@ -218,7 +218,7 @@ public class App
 							myRole = roles.get(0);
 							if (myRole.equals("sheriff")){
 								health++;
-								play("I am el Sheriffo!"); // announce myself if sheriff
+								play("I-am-el-Sheriffo!"); // announce myself if sheriff
 							}
 						}
 						
