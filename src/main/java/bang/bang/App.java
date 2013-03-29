@@ -723,7 +723,7 @@ public class App
 				System.out.println("playing blue, in jail logic");
 				do
 					playerIndex = choosePlayerIndex(roles.size());
-				while (playerIndex != sheriffPos);
+				while (playerIndex == sheriffPos);
 			}
 			if (currentCard.equals("dynamite")) {
 				playerIndex = choosePlayerIndex(roles.size());
