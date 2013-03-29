@@ -199,9 +199,10 @@ public class App
 					 * to do
 					 * add cards to correct hand
 					 */
+					System.out.println("b3 command");
 					b3Button(action[2]);
 					
-					System.out.println("b3 command");
+					
 					
 				} else if (action[0].equals("b1")){
 
