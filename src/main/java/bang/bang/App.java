@@ -474,47 +474,72 @@ public class App
 	}
 
 	private static void takeCardFromHand(String cardType,String card) {
-		int idxOfHand = 0;
-		if(cardType.equals("blue")){
-			if(bHand.contains(card)){
-				//do somehting
-				idxOfHand = bHand.indexOf(card);
-				bHand.remove(card);
-				
-				play("Hand: " + idxOfHand + "card should be: " + card +  printArray[8]);
-				
-			}
-			else{
-				//print something wrong
-				play("are you sure? if you are here there is something wrong, you should start a new game. ");
-			}
+		
+		int tmp;
+		if (hand.size() >=1) {
+			tmp = randomCard();
+			hand.remove(tmp);
+			play("Remove from hand: " + tmp +  printArray[8]);
 		}
-		else if(cardType.equals("gren")){
-			if(gHand.contains(card)){
-				//do something
-				idxOfHand = gHand.indexOf(card);
-				gHand.remove(card);
-				play("Hand: " + idxOfHand + "card should be: " + card +  printArray[8]);
-			}
-			else{
-				
-				//print something wrong
-				play("are you sure? if you are here, there is something wrong, you should start a new game. ");
-			}
+		else if (bHand.size() >= 1) {
+			tmp = 0 + (int)(Math.random() * ((bHand.size() - 0) + 1));
+			bHand.remove(tmp);
+			play("Remove from Blue hand: " + tmp +  printArray[8]);
 		}
-		else {
-			if(hand.contains(card)){
-				//do something
-				idxOfHand = hand.indexOf(card);
-				hand.remove(card);
-				play("Hand: " + idxOfHand + "card should be: " + card +  printArray[8]);
-			}
-			else
-			{
-				//print something wrong
-				play("are you sure? if you are here, there is something wrong, you should start a new game. ");
-			}
+		else if (gHand.size() >= 1) {
+			tmp = 0 + (int)(Math.random() * ((gHand.size() - 0) + 1));
+			gHand.remove(tmp);
+			play("Remove from Green hand: " + tmp +  printArray[8]);
 		}
+		else
+		{
+			//print something wrong
+			play("are you sure? if you are here, there is something wrong, you should start a new game. ");
+		}
+		
+		
+//		
+//		int idxOfHand = 0;
+//		if(cardType.equals("blue")){
+//			if(bHand.contains(card)){
+//				//do somehting
+//				idxOfHand = bHand.indexOf(card);
+//				bHand.remove(card);
+//				
+//				play("Hand: " + idxOfHand + "card should be: " + card +  printArray[8]);
+//				
+//			}
+//			else{
+//				//print something wrong
+//				play("are you sure? if you are here there is something wrong, you should start a new game. ");
+//			}
+//		}
+//		else if(cardType.equals("gren")){
+//			if(gHand.contains(card)){
+//				//do something
+//				idxOfHand = gHand.indexOf(card);
+//				gHand.remove(card);
+//				play("Hand: " + idxOfHand + "card should be: " + card +  printArray[8]);
+//			}
+//			else{
+//				
+//				//print something wrong
+//				play("are you sure? if you are here, there is something wrong, you should start a new game. ");
+//			}
+//		}
+//		else {
+//			if(hand.contains(card)){
+//				//do something
+//				idxOfHand = hand.indexOf(card);
+//				hand.remove(card);
+//				play("Hand: " + idxOfHand + "card should be: " + card +  printArray[8]);
+//			}
+//			else
+//			{
+//				//print something wrong
+//				play("are you sure? if you are here, there is something wrong, you should start a new game. ");
+//			}
+//		}
 		
 	}
 
