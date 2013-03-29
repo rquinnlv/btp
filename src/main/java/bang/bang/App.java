@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -94,6 +95,7 @@ public class App
 	static int inHand = 0;
 	static String lastCardPlayed = "";
 	static boolean isVolcanic = false;
+	static Long lastModifiedDate;
 
 	
 	public static void main( String[] args )
@@ -106,7 +108,8 @@ public class App
 		//    	String B1 = "";
 		//    	String B2 = "";
 
-
+		
+        lastModifiedDate = file.lastModified();
 		BufferedReader reader = null;
 
 		try {
@@ -147,7 +150,11 @@ public class App
 				// close file and wait for new input
 				try {
 					reader.close();
-					Thread.sleep(5000);
+					while(lastModifiedDate.equals(file.lastModified()))
+					{
+						Thread.sleep(5000);
+					}	
+					lastModifiedDate = file.lastModified();
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -193,9 +200,9 @@ public class App
 					}
 					else { // Add to hand
 						if (action[1].equals("gren"))
-							addToHand(3, action[2]);
-						else if (action[1].equals("blue"))
 							addToHand(2, action[2]);
+						else if (action[1].equals("blue"))
+							addToHand(3, action[2]);
 						else 
 							addToHand(1, action[2]);
 					}
@@ -262,7 +269,7 @@ public class App
 
 	private static void healMe() {
 		// TODO Auto-generated method stub
-		if(health > 4){
+		if(health >= 4){
 			
 			//Print i have full health don't need to heal me
 			play("I have full health, don't need your heal");
@@ -433,9 +440,14 @@ public class App
 		switch (handType) {
 		case 1: hand.add(card);
 				inHand++;
+				break;
 		case 2:	GreenHand tmp = new GreenHand(card);
 				gHand.add(tmp);
 				inHand++;
+				break;
+		case 3: bHand.add(card);
+		        inHand++;
+		        break;
 		default: break;
 		}
 	}
