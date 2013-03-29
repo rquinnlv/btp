@@ -903,9 +903,9 @@ public class App
 		int index = rnd.nextInt(Math.abs(range));
 		if (index == 0) 
 			index++;
-		int sheriff = findSheriff();
 		
 		if (myRole.equals("sheriff")) {
+			System.out.println(index);
 			return index;
 		}
 		else 
@@ -918,13 +918,17 @@ public class App
 				index = choosePlayerIndex(range);
 		}
 		else if (myRole.equals("outlaw1") || myRole.equals("outlaw2") || myRole.equals("outlaw3")) {
-			if (sheriff <= myRange)
-				index = sheriff;
+			if (sheriffPos <= myRange)
+				index = sheriffPos;
 		}
-		if (direction == 1)
+		if (direction == 1) {
+			System.out.println(index);
 			return Math.abs(roles.size() - index);
-		else
+		}
+		else {
+			System.out.println(index);
 			return index;
+		}
 	}
 	
 	public static int findSheriff () {
