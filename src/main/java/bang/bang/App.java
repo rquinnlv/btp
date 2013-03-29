@@ -83,7 +83,7 @@ public class App
 		"I call my gun Vera"};
 	
 	static Random rnd = new Random();
-	static int health = 0;
+	static int health = 4;
 	static int rangeGun = 1;
 	static int rangeOther = 0;
 	static int myRange = rangeGun + rangeOther;
@@ -97,6 +97,7 @@ public class App
 	static boolean isVolcanic = false;
 	static Long lastModifiedDate;
 	static boolean isFirstStart = true;
+	static boolean isGameOver = false;
 	
 
 	
@@ -134,18 +135,20 @@ public class App
 					 */			   
 
 					//Initilaize Myself;
-					health = 4;
+				//	health = 4;
 					System.out.println("start command: ");
+					isFirstStart = false;
 
 				}
-				else if(line.equals("end"))
+				else if(isGameOver)
 				{	  /*
 				 *  To do
 				 *  Cleanup
 				 */
 
-					start = false;
-					System.out.print("end command");
+					//start = false;
+					System.out.println("Game over");
+					System.out.println("Remaining roles: " + roles);
 				}
 
 
@@ -416,6 +419,8 @@ public class App
 					}
 					else{
 						//print I am dead, no miss or health
+						health = health - 1;
+						isGameOver = true;
 						play(" I have no health, it's game over for me ");
 					}			
 				}
