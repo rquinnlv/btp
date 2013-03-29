@@ -191,6 +191,7 @@ public class App
 				}
 				//read file for command to play the game
 				action = line.split(",");
+				System.out.println(action[0] + action[1] + action[2]);
 
 				if(action.length < 1){
 					// something is wrong
@@ -200,9 +201,10 @@ public class App
 					 * to do
 					 * add cards to correct hand
 					 */
+					System.out.println("b3 command");
 					b3Button(action[2]);
 					
-					System.out.println("b3 command");
+					
 					
 				} else if (action[0].equals("b1")){
 
@@ -218,7 +220,7 @@ public class App
 							myRole = roles.get(0);
 							if (myRole.equals("sheriff")){
 								health++;
-								play("I am el Sheriffo!"); // announce myself if sheriff
+								play("I-am-el-Sheriffo!"); // announce myself if sheriff
 							}
 						}
 						
@@ -288,7 +290,8 @@ public class App
 				System.out.println("myrole: " + myRole);
 				System.out.println("roles: " + roles);
 				System.out.println("blue hands: " + bHand);
-				System.out.println("green hands: " + gHand);
+				for (int i = 0; i < gHand.size(); i++)
+					System.out.println("green hands: " + gHand.get(i).getCard());
 				System.out.println("health: " + health);
 
 			}    		    		  
@@ -511,8 +514,182 @@ public class App
 //				play(printArray[56]);
 //		}
 		System.out.println("in b3!");
+		
+		playBlueHand();
+//		for (int i = 0; i < bHand.size(); i++) {
+//			System.out.println("looping blue hand");
+//			currentCard = bHand.get(i);
+//			
+//			if (currentCard.equals("jail")) {
+//				do
+//					playerIndex = choosePlayerIndex(roles.size());
+//				while (playerIndex != sheriffPos);
+//			}
+//			if (currentCard.equals("dynamite")) {
+//				playerIndex = choosePlayerIndex(roles.size());
+//			}
+//			if (currentCard.equals("binocular")) {
+//				rangeOther++;
+//				bHand.remove(i);
+//				play("Hand: " + i +  printArray[54]);
+//			}
+//			if (currentCard.equals("scope")) {
+//				rangeOther++;
+//				bHand.remove(i);
+//				play("Hand: " + i +  printArray[53]);
+//			}
+//			if (currentCard.equals("barrel") || currentCard.equals("hideout") || currentCard.equals("mustang")) {
+//				bHand.remove(i);
+//				play("Hand: " + i);
+//			}
+//			if (currentCard.equals("schofield") && rangeGun < 2) {
+//				rangeGun = 2;
+//				bHand.remove(i);
+//				play("Hand: " + i +  printArray[48]);
+//			}
+//			if (currentCard.equals("remindton") && rangeGun < 3){
+//				rangeGun = 3;
+//				bHand.remove(i);
+//				play("Hand: " + i +  printArray[49]);
+//			}
+//			if (currentCard.equals("schofield") && rangeGun < 4){
+//				rangeGun = 4;
+//				bHand.remove(i);
+//				play("Hand: " + i +  printArray[48]);
+//			}
+//			if (currentCard.equals("schofield") && rangeGun < 5){
+//				rangeGun = 5;
+//				bHand.remove(i);
+//				play("Hand: " + i +  printArray[49]);
+//			}
+//			if (currentCard.equals("volcanic")) {
+//				if (!(myRole.contains("outlaw") && sheriffPos > 1)) {
+//					rangeGun = 1;
+//					isVolcanic = true;
+//					bHand.remove(i);
+//					play("Hand: " + i +  printArray[66]);
+//				}
+//			}
+//		}
+		
+		for (int i = 0; i < gHand.size(); i++) {
+			GreenHand currentGreen = gHand.get(i);
+			
+			if (currentGreen.isInPlay() && !currentGreen.isActive()) {
+				currentGreen.activate();
+				gHand.set(i,currentGreen);
+			}
+		}
+		
+		playGreenHand();
+//		for (int i = 0; i < gHand.size(); i++) {
+//			System.out.println("looping green hand");
+//
+//			GreenHand currentGreen = gHand.get(i);	
+//			String cGCard = currentGreen.getCard();
+//			
+//			if (currentGreen.isActive()) {	
+//				if (cGCard.equals("contestoga") || cGCard.equals("cancan") || cGCard.equals("pepperbox")
+//						|| cGCard.equals("howitzer") || cGCard.equals("buffalorifle") || cGCard.equals("knife")
+//						|| cGCard.equals("derringer")) {
+//					play(String.valueOf("Green Hand: " + i + " On player: " + choosePlayerIndex(myRange)) +  printArray[25]);
+//				}
+//				if (cGCard.equals("canteen") && health < 4) {
+//					gHand.remove(i);
+//					play("Green Hand: " + i +  printArray[19]);
+//				}
+//				if (cGCard.equals("ponyexpress")) {
+//					gHand.remove(i);
+//					play("Green Hand: " + i +  printArray[14]);
+//				}
+//			}
+//			
+//			if (!currentGreen.isInPlay()) {
+//				currentGreen.play();
+//				gHand.set(i,currentGreen);
+//				play("green card" + i +  printArray[10]);
+//			}
+//		}
+		for (int i = 0; i < gHand.size(); i++) {
+			GreenHand currentGreen = gHand.get(i);	
+//			String cGCard = currentGreen.getCard();
+			if (!currentGreen.isInPlay()) {
+				currentGreen.play();
+				gHand.set(i,currentGreen);
+				play("green card" + i +  printArray[10]);
+			}
+		}
+		
+		playHand();
+		
+//		for (int i = 0; i < hand.size(); i++) {
+//			System.out.println("looping hand");
+//
+//			String cBCard = hand.get(i);
+//			
+//			if (cBCard.equals("panic")) {
+//				hand.remove(i);
+//				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[43]);
+//			}
+//			if (cBCard.equals("ragtime") || cBCard.equals("brawl")) {
+//				hand.remove(i);
+//				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[44]);
+//			}
+//			if (cBCard.equals("cat")) {
+//				hand.remove(i);
+//				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(roles.size())) +  printArray[47]);
+//			}
+//			if (cBCard.equals("bang")) {
+//				hand.remove(i);
+//				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(myRange)) +  printArray[28]);
+//			}
+//			if (cBCard.equals("gatling")) {
+//				hand.remove(i);
+//				play("Hand: " + i + " On player: " + choosePlayerIndex(myRange) +  printArray[29]);
+//			}
+//			if (cBCard.equals("punch")) {
+//				hand.remove(i);
+//				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[30]);
+//			}
+//			if (cBCard.equals("springfield") || cBCard.equals("duel")) {
+//				hand.remove(i);
+//				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(roles.size())) +  printArray[8]);
+//			}
+//			if (cBCard.equals("indians") || cBCard.equals("wellsfargo") || cBCard.equals("stagecoach")) {
+//				hand.remove(i);
+//				play("Hand: " +  + i +  printArray[15]);
+//			}
+//			if (health < 4) {
+//				if (cBCard.equals("beer")) {
+//					hand.remove(i);
+//					play("Hand: " + i +  printArray[17]);
+//				}
+//				if (cBCard.equals("saloon")) {
+//					hand.remove(i);
+//					play("Hand: " + i +  printArray[18]);
+//				}
+//				if (cBCard.equals("whiskey")) {
+//					hand.remove(i);
+//					play(String.valueOf("Hand: " + i + " and " + randomCard(i)) +  printArray[21]);
+//				}
+//				if (cBCard.equals("tequila")) {
+//					hand.remove(i);
+//					play(String.valueOf("Hand: " + i + " and " + randomCard(i)) +  printArray[20]);
+//				}
+//			}
+//		}
+	}
+	
+	public static void playBlueHand() {
+		String print = new String();
+		String currentCard = new String();
+		int playerIndex;
+		int sheriffPos = findSheriff();
+		
+		System.out.println("looping blue hand");
+		
 		for (int i = 0; i < bHand.size(); i++) {
-			System.out.println("looping blue hand");
+		
 			currentCard = bHand.get(i);
 			
 			if (currentCard.equals("jail")) {
@@ -527,20 +704,24 @@ public class App
 				rangeOther++;
 				bHand.remove(i);
 				play("Hand: " + i +  printArray[54]);
+				playBlueHand();
 			}
 			if (currentCard.equals("scope")) {
 				rangeOther++;
 				bHand.remove(i);
 				play("Hand: " + i +  printArray[53]);
+				playBlueHand();
 			}
 			if (currentCard.equals("barrel") || currentCard.equals("hideout") || currentCard.equals("mustang")) {
 				bHand.remove(i);
 				play("Hand: " + i);
+				playBlueHand();
 			}
 			if (currentCard.equals("schofield") && rangeGun < 2) {
 				rangeGun = 2;
 				bHand.remove(i);
 				play("Hand: " + i +  printArray[48]);
+				playBlueHand();
 			}
 			if (currentCard.equals("remindton") && rangeGun < 3){
 				rangeGun = 3;
@@ -551,11 +732,13 @@ public class App
 				rangeGun = 4;
 				bHand.remove(i);
 				play("Hand: " + i +  printArray[48]);
+				playBlueHand();
 			}
 			if (currentCard.equals("schofield") && rangeGun < 5){
 				rangeGun = 5;
 				bHand.remove(i);
 				play("Hand: " + i +  printArray[49]);
+				playBlueHand();
 			}
 			if (currentCard.equals("volcanic")) {
 				if (!(myRole.contains("outlaw") && sheriffPos > 1)) {
@@ -563,21 +746,15 @@ public class App
 					isVolcanic = true;
 					bHand.remove(i);
 					play("Hand: " + i +  printArray[66]);
+					playBlueHand();
 				}
 			}
 		}
-		
-		for (int i = 0; i < gHand.size(); i++) {
-			GreenHand currentGreen = gHand.get(i);
-			
-			if (currentGreen.isInPlay() && !currentGreen.isActive()) {
-				currentGreen.activate();
-				gHand.set(i,currentGreen);
-			}
-		}
-		
-		for (int i = 0; i < gHand.size(); i++) {
-			System.out.println("looping green hand");
+	}
+	
+	public static void playGreenHand() {
+		System.out.println("looping green hand");
+		for (int i = 0; i < gHand.size(); i++) {	
 
 			GreenHand currentGreen = gHand.get(i);	
 			String cGCard = currentGreen.getCard();
@@ -591,73 +768,85 @@ public class App
 				if (cGCard.equals("canteen") && health < 4) {
 					gHand.remove(i);
 					play("Green Hand: " + i +  printArray[19]);
+					playGreenHand();
 				}
 				if (cGCard.equals("ponyexpress")) {
 					gHand.remove(i);
 					play("Green Hand: " + i +  printArray[14]);
+					playGreenHand();
 				}
 			}
 			
-			if (!currentGreen.isInPlay()) {
-				currentGreen.play();
-				gHand.set(i,currentGreen);
-				play("green card" + i +  printArray[10]);
-			}
+			
 		}
-		
+	}
+	
+	public static void playHand() {
+		System.out.println("looping hand");
 		for (int i = 0; i < hand.size(); i++) {
-			System.out.println("looping hand");
 
 			String cBCard = hand.get(i);
 			
 			if (cBCard.equals("panic")) {
 				hand.remove(i);
 				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[43]);
+				playHand();
 			}
 			if (cBCard.equals("ragtime") || cBCard.equals("brawl")) {
 				hand.remove(i);
 				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[44]);
+				playHand();
 			}
 			if (cBCard.equals("cat")) {
 				hand.remove(i);
 				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(roles.size())) +  printArray[47]);
+				playHand();
 			}
 			if (cBCard.equals("bang")) {
 				hand.remove(i);
 				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(myRange)) +  printArray[28]);
+				playHand();
 			}
 			if (cBCard.equals("gatling")) {
 				hand.remove(i);
 				play("Hand: " + i + " On player: " + choosePlayerIndex(myRange) +  printArray[29]);
+				playHand();
 			}
 			if (cBCard.equals("punch")) {
 				hand.remove(i);
 				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[30]);
+				playHand();
 			}
 			if (cBCard.equals("springfield") || cBCard.equals("duel")) {
 				hand.remove(i);
 				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(roles.size())) +  printArray[8]);
+				playHand();
 			}
 			if (cBCard.equals("indians") || cBCard.equals("wellsfargo") || cBCard.equals("stagecoach")) {
 				hand.remove(i);
 				play("Hand: " +  + i +  printArray[15]);
+				playHand();
 			}
 			if (health < 4) {
 				if (cBCard.equals("beer")) {
 					hand.remove(i);
 					play("Hand: " + i +  printArray[17]);
+					playHand();
 				}
 				if (cBCard.equals("saloon")) {
 					hand.remove(i);
 					play("Hand: " + i +  printArray[18]);
+					playHand();
 				}
 				if (cBCard.equals("whiskey")) {
 					hand.remove(i);
 					play(String.valueOf("Hand: " + i + " and " + randomCard(i)) +  printArray[21]);
+					playHand();
 				}
 				if (cBCard.equals("tequila")) {
 					hand.remove(i);
 					play(String.valueOf("Hand: " + i + " and " + randomCard(i)) +  printArray[20]);
+					playHand();
 				}
 			}
 		}
@@ -681,8 +870,8 @@ public class App
 	
 	public static void play(String str) {
 		try {
-			Runtime.getRuntime().exec("python scream.py \"" + str + "\"");
-			System.out.println("inside of method to exec scream.py ");
+			Runtime.getRuntime().exec("python scream.py '" + str + "'");
+			System.out.println("python scream.py \"" + str + "\"");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
