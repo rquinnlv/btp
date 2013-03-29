@@ -198,7 +198,7 @@ public class App
 					 * to do
 					 * add cards to correct hand
 					 */
-					b3Button(action[1]);
+					b3Button(action[2]);
 					
 					System.out.println("b3 command");
 					
@@ -594,7 +594,7 @@ public class App
 			if (cBCard.equals("ragtime") || cBCard.equals("brawl")) {
 				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[44]);
 			}
-			if (cBCard.equals("catbalou")) {
+			if (cBCard.equals("cat")) {
 				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(roles.size())) +  printArray[47]);
 			}
 			if (cBCard.equals("bang")) {
