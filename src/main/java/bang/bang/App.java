@@ -181,6 +181,7 @@ public class App
 						Thread.sleep(5000);
 						reader = new BufferedReader(new FileReader(file)); 
 						line = reader.readLine();
+						lastModifiedDate = file.lastModified();
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
