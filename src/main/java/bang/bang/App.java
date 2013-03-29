@@ -215,7 +215,8 @@ public class App
 						if(myRole.equals("")) {
 							myRole = roles.get(0);
 							if (myRole.equals("sheriff")){
-								//printSomething(1); // announce myself if sheriff
+								health++;
+								play("I am el Sheriffo!"); // announce myself if sheriff
 							}
 						}
 						
@@ -490,22 +491,22 @@ public class App
 		int playerIndex;
 		int sheriffPos = findSheriff();
 		
-		if (card.equals("jail"))
-			play("miss turn");
-		if (card.equals("dynamite")) {
-			health = health - 3;
-			if (health <=0) {
-				for (int i = 0; i < bHand.size(); i++) {
-					currentCard = hand.get(i);
-					if (currentCard.equals("beer")) {
-						play("Hand: " + i + " " +  printArray[17]);
-						break;
-					}
-				}	
-			}
-			else
-				play(printArray[56]);
-		}
+//		if (card.equals("jail"))
+//			play("miss turn");
+//		if (card.equals("dynamite")) {
+//			health = health - 3;
+//			if (health <=0) {
+//				for (int i = 0; i < bHand.size(); i++) {
+//					currentCard = hand.get(i);
+//					if (currentCard.equals("beer")) {
+//						play("Hand: " + i + " " +  printArray[17]);
+//						break;
+//					}
+//				}	
+//			}
+//			else
+//				play(printArray[56]);
+//		}
 		
 		for (int i = 0; i < bHand.size(); i++) {
 			currentCard = bHand.get(i);
@@ -520,34 +521,43 @@ public class App
 			}
 			if (currentCard.equals("binocular")) {
 				rangeOther++;
+				bHand.remove(i);
 				play("Hand: " + i +  printArray[54]);
 			}
 			if (currentCard.equals("scope")) {
 				rangeOther++;
+				bHand.remove(i);
 				play("Hand: " + i +  printArray[53]);
 			}
-			if (currentCard.equals("barrel") || currentCard.equals("hideout") || currentCard.equals("mustang"))
+			if (currentCard.equals("barrel") || currentCard.equals("hideout") || currentCard.equals("mustang")) {
+				bHand.remove(i);
 				play("Hand: " + i);
+			}
 			if (currentCard.equals("schofield") && rangeGun < 2) {
 				rangeGun = 2;
+				bHand.remove(i);
 				play("Hand: " + i +  printArray[48]);
 			}
 			if (currentCard.equals("remindton") && rangeGun < 3){
 				rangeGun = 3;
+				bHand.remove(i);
 				play("Hand: " + i +  printArray[49]);
 			}
 			if (currentCard.equals("schofield") && rangeGun < 4){
 				rangeGun = 4;
+				bHand.remove(i);
 				play("Hand: " + i +  printArray[48]);
 			}
 			if (currentCard.equals("schofield") && rangeGun < 5){
 				rangeGun = 5;
+				bHand.remove(i);
 				play("Hand: " + i +  printArray[49]);
 			}
 			if (currentCard.equals("volcanic")) {
 				if (!(myRole.contains("outlaw") && sheriffPos > 1)) {
 					rangeGun = 1;
 					isVolcanic = true;
+					bHand.remove(i);
 					play("Hand: " + i +  printArray[66]);
 				}
 			}
@@ -572,10 +582,14 @@ public class App
 						|| cGCard.equals("derringer")) {
 					play(String.valueOf("Green Hand: " + i + " On player: " + choosePlayerIndex(myRange)) +  printArray[25]);
 				}
-				if (cGCard.equals("canteen") && health < 4)
+				if (cGCard.equals("canteen") && health < 4) {
+					gHand.remove(i);
 					play("Green Hand: " + i +  printArray[19]);
-				if (cGCard.equals("ponyexpress"))
-						play("Green Hand: " + i +  printArray[14]);
+				}
+				if (cGCard.equals("ponyexpress")) {
+					gHand.remove(i);
+					play("Green Hand: " + i +  printArray[14]);
+				}
 			}
 			
 			if (!currentGreen.isInPlay()) {
@@ -589,40 +603,52 @@ public class App
 			String cBCard = hand.get(i);
 			
 			if (cBCard.equals("panic")) {
+				hand.remove(i);
 				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[43]);
 			}
 			if (cBCard.equals("ragtime") || cBCard.equals("brawl")) {
+				hand.remove(i);
 				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[44]);
 			}
 			if (cBCard.equals("cat")) {
+				hand.remove(i);
 				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(roles.size())) +  printArray[47]);
 			}
 			if (cBCard.equals("bang")) {
+				hand.remove(i);
 				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(myRange)) +  printArray[28]);
 			}
 			if (cBCard.equals("gatling")) {
+				hand.remove(i);
 				play("Hand: " + i + " On player: " + choosePlayerIndex(myRange) +  printArray[29]);
 			}
 			if (cBCard.equals("punch")) {
+				hand.remove(i);
 				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)) +  printArray[30]);
 			}
 			if (cBCard.equals("springfield") || cBCard.equals("duel")) {
+				hand.remove(i);
 				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(roles.size())) +  printArray[8]);
 			}
 			if (cBCard.equals("indians") || cBCard.equals("wellsfargo") || cBCard.equals("stagecoach")) {
+				hand.remove(i);
 				play("Hand: " +  + i +  printArray[15]);
 			}
 			if (health < 4) {
 				if (cBCard.equals("beer")) {
+					hand.remove(i);
 					play("Hand: " + i +  printArray[17]);
 				}
 				if (cBCard.equals("saloon")) {
+					hand.remove(i);
 					play("Hand: " + i +  printArray[18]);
 				}
 				if (cBCard.equals("whiskey")) {
+					hand.remove(i);
 					play(String.valueOf("Hand: " + i + " and " + randomCard(i)) +  printArray[21]);
 				}
 				if (cBCard.equals("tequila")) {
+					hand.remove(i);
 					play(String.valueOf("Hand: " + i + " and " + randomCard(i)) +  printArray[20]);
 				}
 			}
