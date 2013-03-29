@@ -133,7 +133,7 @@ public class App
 
 					//Initilaize Myself;
 					health = 4;
-					System.out.print("start command: ");
+					System.out.println("start command: ");
 
 				}
 				else if(line.equals("end"))
@@ -163,6 +163,16 @@ public class App
 				reader = new BufferedReader(new FileReader(file));  	
 
 				line = reader.readLine();
+				
+				while(line.equals(null)){
+					try {
+						Thread.sleep(5000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					line = reader.readLine();
+				}
 
 				//read file for command to play the game
 				action = line.split(",");
@@ -177,7 +187,7 @@ public class App
 					 */
 					b3Button(action[1]);
 					
-					System.out.print("b3 command");
+					System.out.println("b3 command");
 					
 				} else if (action[0].equals("b1")){
 
@@ -196,7 +206,7 @@ public class App
 							}
 						}
 						
-						System.out.print("starting a new game...  role has been set");
+						System.out.println("starting a new game...  role has been set");
 					}
 					else { // Add to hand
 						if (action[1].equals("gren"))
@@ -294,7 +304,7 @@ public class App
 				hand.remove(idxOfHand);
 				
 				//print something to pi hand + bang, index
-				play("Hand: " + idxOfHand +" card should be bang "  +  printArray[30]);
+				play (String.valueOf("Hand: " + idxOfHand +" card should be bang "  +  printArray[30]));
 				
 			}
 			else{
@@ -302,11 +312,11 @@ public class App
 				//lost one health, if health is <= 0 print out die message
 				if(health >=2){
 					health = health - 1;
-					play("Almost got me" + printArray[11]  + "health is: " + health );
+					play (String.valueOf("Almost got me" + printArray[11]  + "health is: " + health ));
 				}
 				else
 				{
-					play("I am dead " + printArray[13]);
+					play (String.valueOf("I am dead " + printArray[13]));
 				}
 			}
 		}
@@ -354,13 +364,15 @@ public class App
 				idxOfHand = hand.indexOf("miss");
 				hand.remove(idxOfHand);
 				//print something
-				play("hand: " + idxOfHand + " card should be miss " + " You Missed.");
+				System.out.println("hand: " + idxOfHand + " card should be miss " + " You Missed.");
+				play (String.valueOf("hand: " + idxOfHand + " card should be miss " + " You Missed."));
 			}
 			else if(hand.contains("dodge")){
 				idxOfHand = hand.indexOf("miss");
 				hand.remove(idxOfHand);
 				//print something
 				play("hand: " + idxOfHand + " card should be dodge " + " I dodged the bullet.");
+				
 			}
 			else{
 				//
@@ -617,6 +629,7 @@ public class App
 	public static void play(String str) {
 		try {
 			Runtime.getRuntime().exec("python scream.py \"" + str + "\"");
+			System.out.println("inside of method to exec scream.py ");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

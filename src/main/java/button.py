@@ -25,10 +25,13 @@ while True:
                 val=a.read()
                 b=val[8:]
                 a.close
-                c=open('bang.txt','w')
+                #c=open('bang.txt','w')
                 print "b1,"+b.lower()
-                c.write("b1,"+b.lower())
-                c.close
+		out='echo "b1,%s " > bang.txt' % b.lower()
+		print out
+                os.system(out)
+		#c.write("b1,"+b.lower())
+                #c.close
 		GPIO.output(GREEN_LED, True)
                 GPIO.output(RED_LED, False)
         if ( GPIO.input(24) == False ):
@@ -42,10 +45,13 @@ while True:
                 val=a.read()
                 b=val[8:]
                 a.close
-                c=open('bang.txt','w')
+                #c=open('bang.txt','w')
                 print "b2,"+b.lower()
-                c.write("b2,"+b.lower())
-                c.close
+                out='echo "b2,%s " > bang.txt' % b.lower()
+                print out
+                os.system(out)
+                #c.write("b2,"+b.lower())
+                #c.close
 		GPIO.output(GREEN_LED, True)
                 GPIO.output(RED_LED, False)                
 	if ( GPIO.input(25)== False ):
@@ -59,10 +65,13 @@ while True:
 		val=a.read()
 		b=val[8:]
 		a.close
-		c=open('bang.txt','w')
+		#c=open('bang.txt','w')
 		print "b3,"+b.lower()
-		c.write("b3,"+b.lower())
-		c.close
+                out='echo "b3,%s " > bang.txt' % b.lower()
+                print out
+                os.system(out)		
+		#c.write("b3,"+b.lower())
+		#c.close
 		GPIO.output(GREEN_LED, True)
                 GPIO.output(RED_LED, False)		
 	sleep(0.2);
