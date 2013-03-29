@@ -512,61 +512,63 @@ public class App
 //				play(printArray[56]);
 //		}
 		System.out.println("in b3!");
-		for (int i = 0; i < bHand.size(); i++) {
-			System.out.println("looping blue hand");
-			currentCard = bHand.get(i);
-			
-			if (currentCard.equals("jail")) {
-				do
-					playerIndex = choosePlayerIndex(roles.size());
-				while (playerIndex != sheriffPos);
-			}
-			if (currentCard.equals("dynamite")) {
-				playerIndex = choosePlayerIndex(roles.size());
-			}
-			if (currentCard.equals("binocular")) {
-				rangeOther++;
-				bHand.remove(i);
-				play("Hand: " + i +  printArray[54]);
-			}
-			if (currentCard.equals("scope")) {
-				rangeOther++;
-				bHand.remove(i);
-				play("Hand: " + i +  printArray[53]);
-			}
-			if (currentCard.equals("barrel") || currentCard.equals("hideout") || currentCard.equals("mustang")) {
-				bHand.remove(i);
-				play("Hand: " + i);
-			}
-			if (currentCard.equals("schofield") && rangeGun < 2) {
-				rangeGun = 2;
-				bHand.remove(i);
-				play("Hand: " + i +  printArray[48]);
-			}
-			if (currentCard.equals("remindton") && rangeGun < 3){
-				rangeGun = 3;
-				bHand.remove(i);
-				play("Hand: " + i +  printArray[49]);
-			}
-			if (currentCard.equals("schofield") && rangeGun < 4){
-				rangeGun = 4;
-				bHand.remove(i);
-				play("Hand: " + i +  printArray[48]);
-			}
-			if (currentCard.equals("schofield") && rangeGun < 5){
-				rangeGun = 5;
-				bHand.remove(i);
-				play("Hand: " + i +  printArray[49]);
-			}
-			if (currentCard.equals("volcanic")) {
-				if (!(myRole.contains("outlaw") && sheriffPos > 1)) {
-					rangeGun = 1;
-					isVolcanic = true;
-					bHand.remove(i);
-					play("Hand: " + i +  printArray[66]);
-				}
-			}
-		}
+		
+		playBlueHand();
+//		for (int i = 0; i < bHand.size(); i++) {
+//			System.out.println("looping blue hand");
+//			currentCard = bHand.get(i);
+//			
+//			if (currentCard.equals("jail")) {
+//				do
+//					playerIndex = choosePlayerIndex(roles.size());
+//				while (playerIndex != sheriffPos);
+//			}
+//			if (currentCard.equals("dynamite")) {
+//				playerIndex = choosePlayerIndex(roles.size());
+//			}
+//			if (currentCard.equals("binocular")) {
+//				rangeOther++;
+//				bHand.remove(i);
+//				play("Hand: " + i +  printArray[54]);
+//			}
+//			if (currentCard.equals("scope")) {
+//				rangeOther++;
+//				bHand.remove(i);
+//				play("Hand: " + i +  printArray[53]);
+//			}
+//			if (currentCard.equals("barrel") || currentCard.equals("hideout") || currentCard.equals("mustang")) {
+//				bHand.remove(i);
+//				play("Hand: " + i);
+//			}
+//			if (currentCard.equals("schofield") && rangeGun < 2) {
+//				rangeGun = 2;
+//				bHand.remove(i);
+//				play("Hand: " + i +  printArray[48]);
+//			}
+//			if (currentCard.equals("remindton") && rangeGun < 3){
+//				rangeGun = 3;
+//				bHand.remove(i);
+//				play("Hand: " + i +  printArray[49]);
+//			}
+//			if (currentCard.equals("schofield") && rangeGun < 4){
+//				rangeGun = 4;
+//				bHand.remove(i);
+//				play("Hand: " + i +  printArray[48]);
+//			}
+//			if (currentCard.equals("schofield") && rangeGun < 5){
+//				rangeGun = 5;
+//				bHand.remove(i);
+//				play("Hand: " + i +  printArray[49]);
+//			}
+//			if (currentCard.equals("volcanic")) {
+//				if (!(myRole.contains("outlaw") && sheriffPos > 1)) {
+//					rangeGun = 1;
+//					isVolcanic = true;
+//					bHand.remove(i);
+//					play("Hand: " + i +  printArray[66]);
+//				}
+//			}
+//		}
 		
 		for (int i = 0; i < gHand.size(); i++) {
 			GreenHand currentGreen = gHand.get(i);
@@ -664,6 +666,76 @@ public class App
 		}
 	}
 	
+	public static void playBlueHand() {
+		String print = new String();
+		String currentCard = new String();
+		int playerIndex;
+		int sheriffPos = findSheriff();
+		
+		for (int i = 0; i < bHand.size(); i++) {
+			System.out.println("looping blue hand");
+			currentCard = bHand.get(i);
+			
+			if (currentCard.equals("jail")) {
+				do
+					playerIndex = choosePlayerIndex(roles.size());
+				while (playerIndex != sheriffPos);
+			}
+			if (currentCard.equals("dynamite")) {
+				playerIndex = choosePlayerIndex(roles.size());
+			}
+			if (currentCard.equals("binocular")) {
+				rangeOther++;
+				bHand.remove(i);
+				play("Hand: " + i +  printArray[54]);
+				playBlueHand();
+			}
+			if (currentCard.equals("scope")) {
+				rangeOther++;
+				bHand.remove(i);
+				play("Hand: " + i +  printArray[53]);
+				playBlueHand();
+			}
+			if (currentCard.equals("barrel") || currentCard.equals("hideout") || currentCard.equals("mustang")) {
+				bHand.remove(i);
+				play("Hand: " + i);
+				playBlueHand();
+			}
+			if (currentCard.equals("schofield") && rangeGun < 2) {
+				rangeGun = 2;
+				bHand.remove(i);
+				play("Hand: " + i +  printArray[48]);
+				playBlueHand();
+			}
+			if (currentCard.equals("remindton") && rangeGun < 3){
+				rangeGun = 3;
+				bHand.remove(i);
+				play("Hand: " + i +  printArray[49]);
+			}
+			if (currentCard.equals("schofield") && rangeGun < 4){
+				rangeGun = 4;
+				bHand.remove(i);
+				play("Hand: " + i +  printArray[48]);
+				playBlueHand();
+			}
+			if (currentCard.equals("schofield") && rangeGun < 5){
+				rangeGun = 5;
+				bHand.remove(i);
+				play("Hand: " + i +  printArray[49]);
+				playBlueHand();
+			}
+			if (currentCard.equals("volcanic")) {
+				if (!(myRole.contains("outlaw") && sheriffPos > 1)) {
+					rangeGun = 1;
+					isVolcanic = true;
+					bHand.remove(i);
+					play("Hand: " + i +  printArray[66]);
+					playBlueHand();
+				}
+			}
+		}
+	}
+	
 	public static int randomCard(int index) {
 		int rand = rnd.nextInt(hand.size());
 		if (rand == index)
@@ -683,7 +755,7 @@ public class App
 	public static void play(String str) {
 		try {
 			Runtime.getRuntime().exec("python scream.py \"" + str + "\"");
-			System.out.println("inside of method to exec scream.py ");
+			System.out.println("python scream.py \"" + str + "\"");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
