@@ -507,8 +507,9 @@ public class App
 //			else
 //				play(printArray[56]);
 //		}
-		
+		System.out.println("in b3!");
 		for (int i = 0; i < bHand.size(); i++) {
+			System.out.println("looping blue hand");
 			currentCard = bHand.get(i);
 			
 			if (currentCard.equals("jail")) {
@@ -573,6 +574,8 @@ public class App
 		}
 		
 		for (int i = 0; i < gHand.size(); i++) {
+			System.out.println("looping green hand");
+
 			GreenHand currentGreen = gHand.get(i);	
 			String cGCard = currentGreen.getCard();
 			
@@ -600,6 +603,8 @@ public class App
 		}
 		
 		for (int i = 0; i < hand.size(); i++) {
+			System.out.println("looping hand");
+
 			String cBCard = hand.get(i);
 			
 			if (cBCard.equals("panic")) {
