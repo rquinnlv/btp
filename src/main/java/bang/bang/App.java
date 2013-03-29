@@ -16,7 +16,25 @@ import java.util.Random;
 public class App
 {
 	
-	static String[] printArray;
+	static String[] printArray = {"empty","You lily livered yellow bellied scoundrel","Butthead","You smell like manure.",
+		"You're as ugly as a burnt boot.","You couldn't teach a hen to cluck.","You're as dull as a dishwasher.",
+		"You gutless, yellow, pie-slinger","So, from now on, you better be lookin' behind you when you walk. 'Cause one day you're gonna get a bullet in your back.",
+		"You are uglier than a new-sheared sheep.","You Irish bug","Ouch!","You got me!","Barf!","Jackpot!",
+		"I'm laughing all the way to the bank.","Bonus!","Mmmmm…beer.","Drinks all around!","Yay... water",
+		"One tequila, two tequlia, three tequila, floor.","What wiskey will not cure, there is no cure for.",
+		"Thank heaven","INDIANS!!!","When I'm done with you, there won't be enough left of you to snore.",
+		"Cause of death? Lead poisoning.","Let's settle this once and for all, runt! Or ain't you got the gumption?",
+		"I aim to shoot somebody today and I'd prefer it'd be you.","Bang!","Bang, Bang!","Dodge this!",
+		"Not as deceiving as a low down, dirty... deceiver.","Make like a tree and get out of here.",
+		"That's about as funny as a screen door on a battleship.","Tim is a saboteur.","Let's go! I got me a runt to kill!",
+		"Let these sissies have their party.","Nobody calls me \"Mad Dog\", especially not some duded-up, egg-suckin' gutter trash.",
+		"I hate manure.","What's wrong, McFly. Chicken?","New York city! Get a rope.","There's a snake in my boot. ",
+		"Gimme, Gimme!","I'll be taking that.","Mine!","Get that trash out of here!","Go back to where you came from. ",
+		"Yeah, you can go ahead and get rid of that.","I'm armed and dangerous.","Which way to the gun show?",
+		"I'm on a horse.","Ha, you can't find me!","Saved by the Barrel.","Setting my sights.","I spy with my little eye.",
+		"Lets make this a little more interesting.","Kaboom!","I'm locking you up!","Nobody knows the trouble I've seen…",
+		"Thanks, sucker!","I'm getting better.","You Missed.","In yo face!","You couldn't hit water if you fell out of a boat.",
+		"I'm Buford 'Pi' Tannen","Blargh! *DEATH*","I call my gun Vera"};
 	static Random rnd = new Random();
 	static int health = 0;
 	static int rangeGun = 1;
