@@ -281,6 +281,11 @@ public class App
 					
 				}
 				
+				System.out.println("hands: " + hand );
+				System.out.println("myrole: " + myRole);
+				System.out.println("roles: " + roles);
+				System.out.println("blue hands: " + bHand);
+				System.out.println("green hands: " + gHand);
 
 			}    		    		  
 
@@ -310,7 +315,7 @@ public class App
 
 	private static void someoneShootAtMe(String card) {
 		int idxOfHand = 0;
-		if(card.equals("indian") || card.equals("duel")){
+		if(card.equals("indians") || card.equals("duel")){
 			//do i have a miss
 			if(hand.contains("bang")){
 				
@@ -374,15 +379,15 @@ public class App
 			        
 			      }				
 			}
-			else if(hand.contains("miss") ){
-				idxOfHand = hand.indexOf("miss");
+			else if(hand.contains("missed") ){
+				idxOfHand = hand.indexOf("missed");
 				hand.remove(idxOfHand);
 				//print something
 				System.out.println("hand: " + idxOfHand + " card should be miss " + " You Missed.");
 				play (String.valueOf("hand: " + idxOfHand + " card should be miss " + " You Missed."));
 			}
 			else if(hand.contains("dodge")){
-				idxOfHand = hand.indexOf("miss");
+				idxOfHand = hand.indexOf("dodge");
 				hand.remove(idxOfHand);
 				//print something
 				play("hand: " + idxOfHand + " card should be dodge " + " I dodged the bullet.");
