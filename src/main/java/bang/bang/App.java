@@ -720,13 +720,18 @@ public class App
 			currentCard = bHand.get(i);
 			
 			if (currentCard.equals("jail")) {
-				System.out.println("playing blue, in jail logic");
 				do
 					playerIndex = choosePlayerIndex(roles.size());
 				while (playerIndex == sheriffPos);
+				bHand.remove(i);
+				play("Blue card " + i + " against player: " + playerIndex + "-" + printArray[57]);
+				playBlueHand();
 			}
 			if (currentCard.equals("dynamite")) {
-				playerIndex = choosePlayerIndex(roles.size());
+				//playerIndex = choosePlayerIndex(roles.size());
+				bHand.remove(i);
+				play("Blue card " + i + "-" + printArray[55]);
+				playBlueHand();
 			}
 			if (currentCard.equals("binocular")) {
 				rangeOther++;
