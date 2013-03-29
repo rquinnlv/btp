@@ -16,7 +16,7 @@ import java.util.Random;
 public class App
 {
 	
-	String[] print;
+	static String[] printArray;
 	static Random rnd = new Random();
 	static int health = 0;
 	static int rangeGun = 1;
@@ -192,7 +192,7 @@ public class App
 				for (int i = 0; i < bHand.size(); i++) {
 					currentCard = hand.get(i);
 					if (currentCard.equals("beer")) {
-						play("still alive");
+						play("Hand: " + i + " " +  printArray[1]);
 						break;
 					}
 				}	
@@ -214,31 +214,31 @@ public class App
 			}
 			if (currentCard.equals("binocular") || currentCard.equals("scope")) {
 				rangeOther++;
-				play("Card: " + i);
+				play("Hand: " + i);
 			}
 			if (currentCard.equals("barrel") || currentCard.equals("hideout") || currentCard.equals("mustang"))
-				play("Card: " + i);
+				play("Hand: " + i);
 			if (currentCard.equals("schofield") && rangeGun < 2) {
 				rangeGun = 2;
-				play("Card: " + i);
+				play("Hand: " + i);
 			}
 			if (currentCard.equals("remindton") && rangeGun < 3){
 				rangeGun = 3;
-				play("Card: " + i);
+				play("Hand: " + i);
 			}
 			if (currentCard.equals("schofield") && rangeGun < 4){
 				rangeGun = 4;
-				play("Card: " + i);
+				play("Hand: " + i);
 			}
 			if (currentCard.equals("schofield") && rangeGun < 5){
 				rangeGun = 5;
-				play("Card: " + i);
+				play("Hand: " + i);
 			}
 			if (currentCard.equals("volcanic")) {
 				if (!(myRole.contains("outlaw") && sheriffPos > 1)) {
 					rangeGun = 1;
 					isVolcanic = true;
-					play("Card: " + i);
+					play("Hand: " + i);
 				}
 			}
 		}
@@ -260,12 +260,12 @@ public class App
 				if (cGCard.equals("contestoga") || cGCard.equals("cancan") || cGCard.equals("pepperbox")
 						|| cGCard.equals("howitzer") || cGCard.equals("buffalorifle") || cGCard.equals("knife")
 						|| cGCard.equals("derringer")) {
-					play(String.valueOf(i + choosePlayerIndex(myRange)));
+					play(String.valueOf("Green Hand: " + i + " On player: " + choosePlayerIndex(myRange)));
 				}
 				if (cGCard.equals("canteen") && health < 4)
-					play("canteen heal");
+					play("Green Hand: " + i);
 				if (cGCard.equals("ponyexpress"))
-						play("ponyexpress" + i);
+						play("Green Hand: " + i);
 			}
 			
 			if (!currentGreen.isInPlay()) {
@@ -279,49 +279,38 @@ public class App
 			String cBCard = hand.get(i);
 			
 			if (cBCard.equals("panic")) {
-				play(String.valueOf(i + choosePlayerIndex(rangeOther)));
+				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)));
 			}
 			if (cBCard.equals("ragtime") || cBCard.equals("brawl")) {
-				play(String.valueOf(i + randomCard(i) + choosePlayerIndex(rangeOther)));
+				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(rangeOther)));
 			}
 			if (cBCard.equals("catbalou")) {
-				play(String.valueOf(i + choosePlayerIndex(roles.size())));
+				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(roles.size())));
 			}
 			if (cBCard.equals("bang")) {
-				play(String.valueOf(i + choosePlayerIndex(myRange)));
+				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(myRange)));
 			}
 			if (cBCard.equals("gatling")) {
-				play("gatling" + i + choosePlayerIndex(myRange));
+				play("Hand: " + i + " On player: " + choosePlayerIndex(myRange));
 			}
 			if (cBCard.equals("punch")) {
-				play(String.valueOf(i + choosePlayerIndex(rangeOther)));
+				play(String.valueOf("Hand: " + i + " On player: " + choosePlayerIndex(rangeOther)));
 			}
 			if (cBCard.equals("springfield") || cBCard.equals("duel")) {
-				play(String.valueOf(i + randomCard(i) + choosePlayerIndex(roles.size())));
+				play(String.valueOf("Hand: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(roles.size())));
 			}
 			if (cBCard.equals("indians") || cBCard.equals("wellsfargo") || cBCard.equals("stagecoach")) {
-				play("card" + i);
+				play("Hand: " +  + i);
 			}
 			if (health < 4) {
 				if (cBCard.equals("beer") || cBCard.equals("saloon")) {
-					play("beer" + i);
+					play("Hand: " + i);
 				}
 				if (cBCard.equals("whiskey") || cBCard.equals("tequila")) {
-					play(String.valueOf("whiskey" + i + randomCard(i)));
+					play(String.valueOf("Hand: " + i + " and " + randomCard(i)));
 				}
 			}
 		}
-		
-		
-		
-		//
-			
-		
-//		switch (card) {
-//		case "panic":	
-//			break;
-//		default: break;
-//		}
 	}
 	
 	public static int randomCard(int index) {
@@ -341,7 +330,12 @@ public class App
 	}
 	
 	public static void play(String str) {
-		
+		try {
+			Runtime.getRuntime().exec("python scream.py " + str);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public static int choosePlayerIndex(int range) {
