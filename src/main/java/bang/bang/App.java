@@ -277,18 +277,19 @@ public class App
 						}						
 					}
 					
-					if(lastCardPlayed.equals("panic") || lastCardPlayed.equals("contestoga") || lastCardPlayed.equals("ragtime") 
-							  || lastCardPlayed.equals("cancan") || lastCardPlayed.equals("catbalou") 
-							     || lastCardPlayed.equals("brawl")) {
-						//do action for taking a card away from my hand
-						takeCardFromHand(cardType, card);
-						lastCardPlayed = card;
-					}
+//					if(lastCardPlayed.equals("panic") || lastCardPlayed.equals("contestoga") || lastCardPlayed.equals("ragtime") 
+//							  || lastCardPlayed.equals("cancan") || lastCardPlayed.equals("catbalou") 
+//							     || lastCardPlayed.equals("brawl")) {
+//						//do action for taking a card away from my hand
+//						takeCardFromHand(cardType, card);
+//						lastCardPlayed = card;
+//					}
 					
 					
 					if(card.equals("panic") || card.equals("contestoga") || card.equals("ragtime") 
 							  || card.equals("cancan") || card.equals("cat") || card.equals("brawl")){
-						lastCardPlayed = card;
+						takeCardFromHand(cardType, card);
+						//lastCardPlayed = card;
 					}
 					else if(card.equals("bang") || card.equals("pepperbox") || card.equals("howitzer") || card.equals("Buffalorifle")
 							 || card.equals("punch") || card.equals("knife") || card.equals("derringer") 
