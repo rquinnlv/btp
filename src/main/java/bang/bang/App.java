@@ -735,8 +735,6 @@ public class App
 		int playerIndex;
 		int sheriffPos = findSheriff();
 		
-		System.out.println("looping blue hand");
-		
 		for (int i = 0; i < bHand.size(); i++) {
 		
 			currentCard = bHand.get(i);
@@ -788,18 +786,18 @@ public class App
 				play("Hand: " + i + "--" + printArray[48]);
 				playBlueHand();
 			}
-			if (currentCard.equals("remindton") && rangeGun < 3){
+			if (currentCard.equals("remington") && rangeGun < 3){
 				rangeGun = 3;
 				bHand.remove(i);
 				play("Hand: " + i + "--" + printArray[49]);
 			}
-			if (currentCard.equals("schofield") && rangeGun < 4){
+			if (currentCard.equals("revcarabine") && rangeGun < 4){
 				rangeGun = 4;
 				bHand.remove(i);
 				play("Hand: " + i + "--" + printArray[48]);
 				playBlueHand();
 			}
-			if (currentCard.equals("schofield") && rangeGun < 5){
+			if (currentCard.equals("winchester") && rangeGun < 5){
 				rangeGun = 5;
 				bHand.remove(i);
 				play("Hand: " + i + "--" + printArray[49]);
