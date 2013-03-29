@@ -155,7 +155,7 @@ public class App
 					bHand = new ArrayList<String>();
 					gHand =  new ArrayList<GreenHand>();
 					myRole = "";
-					lastModifiedDate = 0L;
+				//	lastModifiedDate = 0L;
 					isVolcanic = false;
 					inHand = 0;
 					health = 4;
@@ -307,7 +307,10 @@ public class App
 					   // heal me, check for health if full health skip	
 						healMe();
 						lastCardPlayed = card;
-					}										
+					}
+					else if(card.equals("dynamite")){
+						ouch();
+					}
 					
 				}
 				
@@ -326,6 +329,25 @@ public class App
 			e.printStackTrace();
 		} 
 
+	}
+
+	private static void ouch() {
+		if(health <= 3){
+			if(hand.contains("beer")){
+				health = 1;
+			}
+			else{
+				health = 0;
+				isGameOver = true;
+				play(" I have no health, it's game over for me ");
+			}
+		}
+		else{
+			health = health - 3;
+			play("ouch"  +  printArray[17]);
+			
+		}
+		
 	}
 
 	private static void healMe() {
