@@ -868,7 +868,7 @@ public class App
 	
 	public static void play(String str) {
 		try {
-			Runtime.getRuntime().exec("python scream.py " + str);
+			Runtime.getRuntime().exec("python scream.py '" + str + "'");
 			System.out.println("python scream.py \"" + str + "\"");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
