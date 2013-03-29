@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -28,6 +29,7 @@ public class App
 	static List <GreenHand>	gHand =  new ArrayList<GreenHand>();
 	static String myRole = "";
 	static int inHand = 0;
+	static String lastCardPlayed = "";
 	
 	public static void main( String[] args )
 	{
@@ -133,7 +135,43 @@ public class App
 					}
 					
 
-				} else if (action[0].equals("b2"));
+				} else if (action[0].equals("b2")){
+					String card = action[2];
+					String cardType = action[1];
+					if(card.equals("panic") || card.equals("contestoga") || card.equals("ragtime") 
+							  || card.equals("cancan") || card.equals("cat") || card.equals("brawl")){
+						lastCardPlayed = card;
+					}
+					else if(card.equals("bang") || card.equals("pepperbox") || card.equals("howitzer") || card.equals("Buffalorifle")
+							 || card.equals("punch") || card.equals("knife") || card.equals("derringer") 
+							     || card.equals("springfield") || card.equals("indian") || card.equals("duel")){
+						
+						// do action for to check for miss, no miss check for health, last health check for beer. if last health play beer
+						someoneShotMe(card);
+					}
+//					else if(card.equals("indian") || card.equals("duel")){
+//						// play bang , if no bang in hand, minus health, if last bullet, 
+//						someoneShootMe(card);
+//						//print something and announce finished from the game						
+//					}
+					else if(card.equals("saloon") || card.equals("tequila")){
+					   // heal me, check for health if full health skip	
+						healMe();
+					}
+					
+					
+					if(lastCardPlayed.equals("panic") || lastCardPlayed.equals("contestoga") || lastCardPlayed.equals("ragtime") 
+							  || lastCardPlayed.equals("cancan") || lastCardPlayed.equals("catbalou") 
+							     || lastCardPlayed.equals("brawl")) {
+						//do action for taking a card away from my hand
+						takeCardFromHand(cardType, card);
+					}
+				//	playMyHand(lastCardPlayed, action[1]);
+					lastCardPlayed = card;
+				}
+				
+				
+				
 
 				/*
 				 * to do 
@@ -163,6 +201,139 @@ public class App
 		} 
 
 	}
+
+	private static void healMe() {
+		// TODO Auto-generated method stub
+		if(health > 5){
+			
+			//Print i have full health don't need to heal me
+		}
+		else
+		{
+			health = health + 1;
+		}
+		
+	}
+
+	private static void someoneShotMe(String card) {
+		int idxOfHand = 0;
+		if(card.equals("indian") || card.equals("duel")){
+			//do i have a miss
+			if(hand.contains("bang")){
+				
+				idxOfHand = hand.indexOf("bang");
+				hand.remove(idxOfHand);
+				
+				//print something to pi hand + bang, index
+			}
+			else{
+				//print something is wrong
+				//lost one health, if health is <= 0 print out die message
+			}
+		}
+		else 
+		{
+			if(gHand.contains("sombrero") || gHand.contains("tengallonhat") || gHand.contains("ironplate") 
+					 || gHand.contains("bible")){
+
+				 Iterator<GreenHand> iter = gHand.iterator();
+				 while (iter.hasNext()) {      // any more element
+			         // Retrieve the next element, explicitly downcast from Object back to String
+			         GreenHand gh = iter.next();
+			         if(gh.Card.equals("sombrero") && gh.active > 0){
+			        	idxOfHand = gHand.indexOf(gh.Card);
+			        	gHand.remove(idxOfHand);
+			        	//print something
+			        	break;
+			         }
+			         else if(gh.Card.equals("tengallonhat") && gh.active > 0){
+			        	idxOfHand = gHand.indexOf(gh.Card);
+				        gHand.remove(idxOfHand);
+				        //print something
+				        break;
+			         }
+			         else if(gh.Card.equals("ironplate") && gh.active > 0){
+			        	idxOfHand = gHand.indexOf(gh.Card);
+				        gHand.remove(idxOfHand);
+				        //print something
+				        break;
+			         }
+			         else if(gh.Card.equals("bible") && gh.active > 0){
+				        idxOfHand = gHand.indexOf(gh.Card);
+					    gHand.remove(idxOfHand);
+					        //print something
+					    break;
+				     }
+			        
+			      }				
+			}
+			else if(hand.contains("miss") ){
+				idxOfHand = hand.indexOf("miss");
+				hand.remove(idxOfHand);
+				//print something
+			}
+			else if(hand.contains("dodge")){
+				idxOfHand = hand.indexOf("miss");
+				hand.remove(idxOfHand);
+				//print something
+			}
+			else{
+				//
+				if (health >= 2){
+					health = health - 1;
+				}
+				else
+				{
+					if(hand.contains("beer")){
+						idxOfHand = hand.indexOf("beer");
+						hand.remove(idxOfHand);
+						//print last health but played beer
+					}
+					else{
+						//print I am dead, no miss or health
+					}			
+				}
+			}
+		}
+	}
+		
+
+	
+
+	private static void takeCardFromHand(String cardType,String card) {
+		if(cardType.equals("blue")){
+			if(bHand.contains(card)){
+				//do somehting
+				bHand.remove(card);
+			}
+			else{
+				//print something wrong
+			}
+		}
+		else if(cardType.equals("gren")){
+			if(gHand.contains(card)){
+				//do something
+				gHand.remove(card);
+			}
+			else{
+				
+				//print something wrong
+			}
+		}
+		else {
+			if(hand.contains(card)){
+				//do something
+				hand.remove(card);
+			}
+			else
+			{
+				//print something wrong
+			}
+		}
+		
+	}
+
+	
 
 	public static void addToHand(int handType, String card) {
 		// resulted from b3 - used to add initial hand and general store cards
