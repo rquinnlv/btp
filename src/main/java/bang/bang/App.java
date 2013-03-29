@@ -26,7 +26,7 @@ public class App
 		"You-couldn't-teach-a-hen-to-cluck.",
 		"You're-as-dull-as-a-dishwasher.",
 		"You-gutless,-yellow,-pie-slinger",
-		"So,-from-now-on,-you-better-be-lookin'-behind-you-when-you-walk.-'Cause-one-day-you're-gonna-get-a-bullet-in-your-back.",
+		"So,-from-now-on,-you-better-watch-yor-back",
 		"You-are-uglier-than-a-new-sheared-sheep.",
 		"You-Irish-bug",
 		"Ouch!",
@@ -911,35 +911,49 @@ public class App
 		 * Renegade: shoot all except sheriff, sheriff last
 		 * 
 		 */
+//		if (roles.size() < range) {
+//			range = roles.size() - 1;
+//		}
+		
 		int sheriffPos = findSheriff();
 		int direction = 0; // 0 = left, 1 = right
 		
 		if (!(sheriffPos == 0))
-			if (((double)sheriffPos/(double)roles.size()) > 0.5)
+			if (((double)sheriffPos/(double)roles.size()) < 0.5){
+				//System.out.println("go right");
 				direction = 1;
-		
+			}
+		// size - index is the left index
 		
 		//int index = rnd.nextInt(Math.abs(range));
-		int index = 0 + (int)(Math.random() * ((Math.abs(range) - 0) + 1));
+		int index = 0 + (int)(Math.random() * (Math.abs(range) + 1));
+		//System.out.println("index: " + index);
 		if (index == 0) 
 			index++;
+		if (direction == 1) {
+			index = roles.size() - index;
+		}
+		
 		
 		if (myRole.equals("sheriff")) {
 			//System.out.println(index);
-			return index;
+			return index%roles.size();
 		}
 		else 
 		if (myRole.equals("renegade")) {
 			if (roles.get(index).equals("sheriff") && roles.size() > 2)
-			index = choosePlayerIndex(range);
+				index = choosePlayerIndex(range);
+			return index%roles.size();
 		}
 		else if (myRole.equals("deputy1") || myRole.equals("deputy2")) {
 			if (roles.get(index).equals("sheriff"))
 				index = choosePlayerIndex(range);
+			return index%roles.size();
 		}
 		else if (myRole.equals("outlaw1") || myRole.equals("outlaw2") || myRole.equals("outlaw3")) {
 			if (sheriffPos <= myRange)
 				index = sheriffPos;
+			return index%roles.size();
 		}
 		if (direction == 1) {
 			//System.out.println(index);
@@ -947,7 +961,7 @@ public class App
 		}
 		else {
 			//System.out.println(index);
-			return index;
+			return index%roles.size();
 		}
 	}
 	
