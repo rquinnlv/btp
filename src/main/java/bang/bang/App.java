@@ -84,7 +84,8 @@ public class App
 		"You-couldn't-hit-water-if-you-fell-out-of-a-boat.",
 		"I'm-Buford-'Pi'-Tannen",
 		"Blargh!-*DEATH*",
-		"I-call-my-gun-Vera"};
+		"I-call-my-gun-Vera",
+		"Trash-it!"};
 	
 	static Random rnd = new Random();
 	static int health = 4;
@@ -823,10 +824,40 @@ public class App
 			String cGCard = currentGreen.getCard();
 			
 			if (currentGreen.isActive()) {	
-				if (cGCard.equals("contestoga") || cGCard.equals("cancan") || cGCard.equals("pepperbox")
-						|| cGCard.equals("howitzer") || cGCard.equals("buffalorifle") || cGCard.equals("knife")
-						|| cGCard.equals("derringer")) {
+				if (cGCard.equals("contestoga")) {
+					gHand.remove(i);
+					play(String.valueOf("Green Hand: " + i + " On player: " + choosePlayerIndex(myRange)) + "--" + printArray[42]);
+					playGreenHand();
+				}
+				if (cGCard.equals("cancan")) {
+					gHand.remove(i);
+					play(String.valueOf("Green Hand: " + i + " On player: " + choosePlayerIndex(myRange)) + "--" + printArray[67]);
+					playGreenHand();
+				}
+				if (cGCard.equals("pepperbox")) {
+					gHand.remove(i);
+					play(String.valueOf("Green Hand: " + i + " On player: " + choosePlayerIndex(myRange)) + "--" + printArray[27]);
+					playGreenHand();
+				}
+				if (cGCard.equals("howitzer")) {
+					gHand.remove(i);
 					play(String.valueOf("Green Hand: " + i + " On player: " + choosePlayerIndex(myRange)) + "--" + printArray[25]);
+					playGreenHand();
+				}
+				if (cGCard.equals("buffalorifle")) {
+					gHand.remove(i);
+					play(String.valueOf("Green Hand: " + i + " On player: " + choosePlayerIndex(myRange)) + "--" + printArray[32]);
+					playGreenHand();
+				}
+				if (cGCard.equals("knife")) {
+					gHand.remove(i);
+					play(String.valueOf("Green Hand: " + i + " On player: " + choosePlayerIndex(myRange)) + "--" + printArray[30]);
+					playGreenHand();
+				}
+				if (cGCard.equals("derringer")) {
+					gHand.remove(i);
+					play(String.valueOf("Green Hand: " + i + " On player: " + choosePlayerIndex(myRange)) + "--" + printArray[26]);
+					playGreenHand();
 				}
 				if (cGCard.equals("canteen") && health < 4) {
 					gHand.remove(i);
