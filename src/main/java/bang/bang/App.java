@@ -264,6 +264,7 @@ public class App
 							     || card.equals("springfield") || card.equals("indian") || card.equals("duel")){
 						
 						// do action for to check for miss, no miss check for health, last health check for beer. if last health play beer
+						System.out.println("inside: someoneShottAtMe");
 						someoneShootAtMe(card);
 						lastCardPlayed = card;
 					}

@@ -27,7 +27,7 @@ while True:
                 a.close
                 #c=open('bang.txt','w')
                 print "b1,"+b.lower()
-		out='echo "b1,%s " > bang.txt' % b.lower()
+		out='echo "b1,%s" > bang.txt' % b.lower()
 		print out
                 os.system(out)
 		#c.write("b1,"+b.lower())
@@ -47,7 +47,7 @@ while True:
                 a.close
                 #c=open('bang.txt','w')
                 print "b2,"+b.lower()
-                out='echo "b2,%s " > bang.txt' % b.lower()
+                out='echo "b2,%s" > bang.txt' % b.lower()
                 print out
                 os.system(out)
                 #c.write("b2,"+b.lower())
@@ -67,7 +67,7 @@ while True:
 		a.close
 		#c=open('bang.txt','w')
 		print "b3,"+b.lower()
-                out='echo "b3,%s " > bang.txt' % b.lower()
+                out='echo "b3,%s" > bang.txt' % b.lower()
                 print out
                 os.system(out)		
 		#c.write("b3,"+b.lower())
