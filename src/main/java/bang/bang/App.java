@@ -684,8 +684,10 @@ public class App
 		int playerIndex;
 		int sheriffPos = findSheriff();
 		
+		System.out.println("looping blue hand");
+		
 		for (int i = 0; i < bHand.size(); i++) {
-			System.out.println("looping blue hand");
+		
 			currentCard = bHand.get(i);
 			
 			if (currentCard.equals("jail")) {
@@ -749,8 +751,8 @@ public class App
 	}
 	
 	public static void playGreenHand() {
-		for (int i = 0; i < gHand.size(); i++) {
-			System.out.println("looping green hand");
+		System.out.println("looping green hand");
+		for (int i = 0; i < gHand.size(); i++) {	
 
 			GreenHand currentGreen = gHand.get(i);	
 			String cGCard = currentGreen.getCard();
@@ -778,8 +780,8 @@ public class App
 	}
 	
 	public static void playHand() {
+		System.out.println("looping hand");
 		for (int i = 0; i < hand.size(); i++) {
-			System.out.println("looping hand");
 
 			String cBCard = hand.get(i);
 			
