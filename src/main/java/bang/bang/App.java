@@ -19,68 +19,72 @@ public class App
 {
 	
 	static String[] printArray = {"empty",
-		"You lily livered yellow bellied scoundrel",
+		"You-lily-livered-yellow-bellied-scoundrel",
 		"Butthead",
-		"You smell like manure.",
-		"You're as ugly as a burnt boot.",
-		"You couldn't teach a hen to cluck.",
-		"You're as dull as a dishwasher.",
-		"You gutless, yellow, pie-slinger",
-		"So, from now on, you better be lookin' behind you when you walk. 'Cause one day you're gonna get a bullet in your back.",
-		"You are uglier than a new-sheared sheep.",
-		"You Irish bug",
+		"You-smell-like-manure.",
+		"You're-as-ugly-as-a-burnt-boot.",
+		"You-couldn't-teach-a-hen-to-cluck.",
+		"You're-as-dull-as-a-dishwasher.",
+		"You-gutless,-yellow,-pie-slinger",
+		"So,-from-now-on,-you-better-be-lookin'-behind-you-when-you-walk.-'Cause-one-day-you're-gonna-get-a-bullet-in-your-back.",
+		"You-are-uglier-than-a-new-sheared-sheep.",
+		"You-Irish-bug",
 		"Ouch!",
-		"You got me!",
+		"You-got-me!",
 		"Barf!",
 		"Jackpot!",
-		"I'm laughing all the way to the bank.",
+		"I'm-laughing-all-the-way-to-the-bank.",
 		"Bonus!",
 		"Mmmmm…beer.",
-		"Drinks all around!",
-		"Yay... water",
-		"One tequila, two tequlia, three tequila, floor.",
-		"What wiskey will not cure, there is no cure for.",
-		"Thank heaven",
+		"Drinks-all-around!",
+		"Yay...-water",
+		"One-tequila,-two-tequlia,-three-tequila,-floor.",
+		"What-wiskey-will-not-cure,-there-is-no-cure-for.",
+		"Thank-heaven",
 		"INDIANS!!!",
-		"When I'm done with you, there won't be enough left of you to snore.",
-		"Cause of death? Lead poisoning.",
-		"Let's settle this once and for all, runt! Or ain't you got the gumption?",
-		"I aim to shoot somebody today and I'd prefer it'd be you.",
+		"When-I'm-done-with-you,-there-won't-be-enough-left-of-you-to-snore.",
+		"Cause-of-death?-Lead poisoning.",
+		"Let's-settle-this-once-and-for-all,-runt!-Or-ain't-you-got-the-gumption?",
+		"I-aim-to-shoot-somebody-today-and-I'd-prefer-it'd-be-you.",
 		"Bang!",
-		"Bang, Bang!",
-		"Dodge this!",
-		"Not as deceiving as a low down, dirty... deceiver.","Make like a tree and get out of here.",
-		"That's about as funny as a screen door on a battleship.",
-		"Tim is a saboteur.",
-		"Let's go! I got me a runt to kill!",
-		"Let these sissies have their party.",
-		"Nobody calls me \"Mad Dog\", especially not some duded-up, egg-suckin' gutter trash.",
-		"I hate manure.","What's wrong, McFly. Chicken?",
-		"New York city! Get a rope.",
-		"There's a snake in my boot. ",
-		"Gimme, Gimme!",
-		"I'll be taking that.","Mine!",
-		"Get that trash out of here!",
-		"Go back to where you came from. ",
-		"Yeah, you can go ahead and get rid of that.",
-		"I'm armed and dangerous.",
-		"Which way to the gun show?",
-		"I'm on a horse.",
-		"Ha, you can't find me!",
-		"Saved by the Barrel.",
-		"Setting my sights.",
-		"I spy with my little eye.",
-		"Lets make this a little more interesting.",
+		"Bang,-Bang!",
+		"Dodge-this!",
+		"Not-as-deceiving-as-a-low-down,-dirty...-deceiver.",
+		"Make-like-a-tree-and-get-out-of-here.",
+		"That's-about-as-funny-as-a-screen-door-on-a-battleship.",
+		"Tim-is-a-saboteur.",
+		"Let's-go!-I-got-me-a-runt-to-kill!",
+		"Let-these-sissies-have-their-party.",
+		"Nobody-calls me-\"Mad Dog\",-especially-not-some-duded-up,-egg-suckin'-gutter-trash.",
+		"I-hate-manure.",
+		"What's-wrong,-McFly.-Chicken?",
+		"New-York-city!-Get-a-rope.",
+		"There's-a-snake-in-my-boot.",
+		"Gimme,-Gimme!",
+		"I'll-be-taking-that.",
+		"Mine!",
+		"Get-that-trash-out-of-here!",
+		"Go-back-to-where-you-came-from.",
+		"Yeah,-you-can-go-ahead-and-get-rid-of-that.",
+		"I'm-armed-and-dangerous.",
+		"Which-way-to-the-gun-show?",
+		"I'm-on-a-horse.",
+		"Ha,-you-can't-find me!",
+		"Saved-by-the-Barrel.",
+		"Setting-my-sights.",
+		"I-spy-with-my-little-eye.",
+		"Lets-make-this-a-little-more-interesting.",
 		"Kaboom!",
-		"I'm locking you up!",
-		"Nobody knows the trouble I've seen…",
-		"Thanks, sucker!",
-		"I'm getting better.",
-		"You Missed.",
-		"In yo face!",
-		"You couldn't hit water if you fell out of a boat.",
-		"I'm Buford 'Pi' Tannen","Blargh! *DEATH*",
-		"I call my gun Vera"};
+		"I'm-locking-you-up!",
+		"Nobody-knows-the-trouble-I've-seen…",
+		"Thanks,-sucker!",
+		"I'm-getting-better.",
+		"You-Missed.",
+		"In-yo-face!",
+		"You-couldn't-hit-water-if-you-fell-out-of-a-boat.",
+		"I'm-Buford-'Pi'-Tannen",
+		"Blargh!-*DEATH*",
+		"I-call-my-gun-Vera"};
 	
 	static Random rnd = new Random();
 	static int health = 0;
@@ -246,7 +250,7 @@ public class App
 							if (roles.get(i).equals(action[2])){
 								roles.remove(i);
 								//print something
-								play("You dead player " + i +  "who is the champ now?");
+								play("You-dead-player-" + i +  "who-is-the-champ-now?");
 							}							
 						}						
 					}
@@ -308,14 +312,14 @@ public class App
 		if(health >= 4){
 			
 			//Print i have full health don't need to heal me
-			play("I have full health, don't need your heal");
+			play("I-have-full-health,-don't-need-your-heal");
 		}
 		else
 		{
 			health = health + 1;
 			
 			//print my full health
-			play("my health should be: " + health);
+			play("my health-should be:-" + health);
 		}
 		
 	}
@@ -330,7 +334,7 @@ public class App
 				hand.remove(idxOfHand);
 				
 				//print something to pi hand + bang, index
-				play ("Hand: " + String.valueOf(idxOfHand) +" card should be bang "  +  printArray[30].toString());
+				play ("Hand:-" + String.valueOf(idxOfHand) +"-card-should-be-bang "  +  printArray[30].toString());
 				
 			}
 			else{
@@ -338,11 +342,11 @@ public class App
 				//lost one health, if health is <= 0 print out die message
 				if(health >=2){
 					health = health - 1;
-					play ("Almost got me" + printArray[11]  + "health is: " + health );
+					play ("Almost-got-me" + printArray[11]  + "health-is:-" + health );
 				}
 				else
 				{
-					play ("I am dead " + printArray[13]);
+					play ("I-am-dead-" + printArray[13]);
 				}
 			}
 		}
@@ -359,28 +363,28 @@ public class App
 			        	idxOfHand = gHand.indexOf(gh.Card);
 			        	gHand.remove(idxOfHand);
 			        	//print something
-			        	play("Hand: " + idxOfHand + " card should be sombrero " + " you can do better than this!");
+			        	play("Hand:-" + idxOfHand + "-card-should-be-sombrero-" + "-you-can-do-better-than-this!");
 			        	break;
 			         }
 			         else if(gh.Card.equals("tengallonhat") && gh.active > 0){
 			        	idxOfHand = gHand.indexOf(gh.Card);
 				        gHand.remove(idxOfHand);
 				        //print something
-				        play("hand: " + idxOfHand + " card should be sombrero " + " Oh my ten gallon hat is so heavy");
+				        play("hand:-" + idxOfHand + "-card-should-be-sombrero-" + "-Oh-my-ten-gallon-hat-is-so-heavy");
 				        break;
 			         }
 			         else if(gh.Card.equals("ironplate") && gh.active > 0){
 			        	idxOfHand = gHand.indexOf(gh.Card);
 				        gHand.remove(idxOfHand);
 				        //print something
-				        play("hand: " + idxOfHand + " card should be ironplate " + " nothing can come through with my iron plate");
+				        play("hand:-" + idxOfHand + "-card-should-be-ironplate-" + "-nothing-can-come-through-with-my-iron-plate");
 				        break;
 			         }
 			         else if(gh.Card.equals("bible") && gh.active > 0){
 				        idxOfHand = gHand.indexOf(gh.Card);
 					    gHand.remove(idxOfHand);
 					        //print something
-					    play("hand: " + idxOfHand + " card should be bible " + " God is awesome!");
+					    play("hand:-" + idxOfHand + "-card-should-be-bible-" + "-God-is-awesome!");
 					    break;
 				     }
 			        
@@ -390,8 +394,8 @@ public class App
 				idxOfHand = hand.indexOf("missed");
 				hand.remove(idxOfHand);
 				//print something
-				System.out.println("hand: " + idxOfHand + " card should be miss " + " You Missed.");
-				play (String.valueOf("hand: " + idxOfHand + " card should be miss " + " You Missed."));
+				System.out.println("hand:-" + idxOfHand + "-card-should-be-miss " + "-You-Missed.");
+				play (String.valueOf("hand:-" + idxOfHand + "-card-should-be-miss-" + "-You-Missed."));
 			}
 			else if(hand.contains("dodge")){
 				idxOfHand = hand.indexOf("dodge");
@@ -870,8 +874,9 @@ public class App
 	
 	public static void play(String str) {
 		try {
-			Runtime.getRuntime().exec("python scream.py '" + str + "'");
-			System.out.println("python scream.py \"" + str + "\"");
+			String tmp = str.replace(" ", "-");
+			Runtime.getRuntime().exec("python scream.py '" + tmp + "'");
+			System.out.println("python scream.py \"" + tmp + "\"");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
