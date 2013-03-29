@@ -286,6 +286,7 @@ public class App
 				System.out.println("roles: " + roles);
 				System.out.println("blue hands: " + bHand);
 				System.out.println("green hands: " + gHand);
+				System.out.println("health: " + health);
 
 			}    		    		  
 
@@ -323,7 +324,7 @@ public class App
 				hand.remove(idxOfHand);
 				
 				//print something to pi hand + bang, index
-				play (String.valueOf("Hand: " + idxOfHand +" card should be bang "  +  printArray[30]));
+				play ("Hand: " + String.valueOf(idxOfHand) +" card should be bang "  +  printArray[30].toString());
 				
 			}
 			else{
@@ -331,11 +332,11 @@ public class App
 				//lost one health, if health is <= 0 print out die message
 				if(health >=2){
 					health = health - 1;
-					play (String.valueOf("Almost got me" + printArray[11]  + "health is: " + health ));
+					play ("Almost got me" + printArray[11]  + "health is: " + health );
 				}
 				else
 				{
-					play (String.valueOf("I am dead " + printArray[13]));
+					play ("I am dead " + printArray[13]);
 				}
 			}
 		}
