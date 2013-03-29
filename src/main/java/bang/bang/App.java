@@ -174,6 +174,18 @@ public class App
 					line = reader.readLine();
 				}
 
+				while(line.split(",").length < 2){
+					try {
+						
+						reader.close();
+						Thread.sleep(5000);
+						reader = new BufferedReader(new FileReader(file)); 
+						line = reader.readLine();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 				//read file for command to play the game
 				action = line.split(",");
 
