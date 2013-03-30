@@ -90,7 +90,7 @@ public class App
 	static Random rnd = new Random();
 	static int health = 4;
 	static int rangeGun = 1;
-	static int rangeOther = 0;
+	static int rangeOther = 1;
 	static int myRange = rangeGun + rangeOther;
 	static List <String>	roles =  new ArrayList<String>();
 	static List <String>	hand =  new ArrayList<String>();
