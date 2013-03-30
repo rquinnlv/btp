@@ -277,7 +277,7 @@ public class App
 						}						
 					}
 					
-//					if(lastCardPlayed.equals("panic") || lastCardPlayed.equals("contestoga") || lastCardPlayed.equals("ragtime") 
+//					if(lastCardPlayed.equals("panic") || lastCardPlayed.equals("conestoga") || lastCardPlayed.equals("ragtime") 
 //							  || lastCardPlayed.equals("cancan") || lastCardPlayed.equals("catbalou") 
 //							     || lastCardPlayed.equals("brawl")) {
 //						//do action for taking a card away from my hand
@@ -286,7 +286,7 @@ public class App
 //					}
 					
 					
-					if(card.equals("panic") || card.equals("contestoga") || card.equals("ragtime") 
+					if(card.equals("panic") || card.equals("conestoga") || card.equals("ragtime") 
 							  || card.equals("cancan") || card.equals("cat") || card.equals("brawl")){
 						takeCardFromHand(cardType, card);
 						//lastCardPlayed = card;
@@ -719,7 +719,7 @@ public class App
 					play("Green Hand: " + i + "--" + printArray[19]);
 					playGreenHand();
 				}
-				if (cGCard.equals("contestoga")) {
+				if (cGCard.equals("conestoga")) {
 					gHand.remove(i);
 					play(String.valueOf("Green Hand: " + i + " On player: " + choosePlayerIndex(myRange)) + "--" + printArray[42]);
 					playGreenHand();
