@@ -293,7 +293,7 @@ public class App
 					}
 					else if(card.equals("bang") || card.equals("pepperbox") || card.equals("howitzer") || card.equals("Buffalorifle")
 							 || card.equals("punch") || card.equals("knife") || card.equals("derringer") 
-							     || card.equals("springfield") || card.equals("indian") || card.equals("duel")){
+							     || card.equals("springfield") || card.equals("indians") || card.equals("duel")){
 						
 						// do action for to check for miss, no miss check for health, last health check for beer. if last health play beer
 						System.out.println("inside: someoneShottAtMe");
@@ -320,8 +320,9 @@ public class App
 				System.out.println("myrole: " + myRole);
 				System.out.println("roles: " + roles);
 				System.out.println("blue hands: " + bHand);
-				for (int i = 0; i < gHand.size(); i++)
-					System.out.println("green hands: " + gHand.get(i).getCard());
+				for (int i = 0; i < gHand.size(); i++) {
+					System.out.println("green hands: " + gHand.get(i).getCard() + ":" + gHand.get(i).isActive());
+				}
 				System.out.println("health: " + health);
 
 			}    		    		  
@@ -334,11 +335,17 @@ public class App
 	}
 
 	private static void ouch() {
+		boolean hld = false;
 		if(health <= 3){
-			if(hand.contains("beer")){
-				health = 1;
+			for (int i = 0; i < hand.size(); i++) {
+				if (hand.get(i).equals("beer")) {
+					hand.remove(i);
+					health = 1;
+					play("Still Alive!");					
+				}
+				hld=true;	
 			}
-			else{
+			if (!hld){
 				health = 0;
 				isGameOver = true;
 				play(" I have no health, it's game over for me ");
@@ -397,45 +404,58 @@ public class App
 		}
 		else 
 		{
-			if(gHand.contains("sombrero") || gHand.contains("tengallonhat") || gHand.contains("ironplate") 
-					 || gHand.contains("bible")){
-
-				 Iterator<GreenHand> iter = gHand.iterator();
-				 while (iter.hasNext()) {      // any more element
-			         // Retrieve the next element, explicitly downcast from Object back to String
-			         GreenHand gh = iter.next();
-			         if(gh.Card.equals("sombrero") && gh.active > 0){
-			        	idxOfHand = gHand.indexOf(gh.Card);
-			        	gHand.remove(idxOfHand);
-			        	//print something
-			        	play("Hand:-" + idxOfHand + "-card-should-be-sombrero-" + "-you-can-do-better-than-this!");
-			        	break;
-			         }
-			         else if(gh.Card.equals("tengallonhat") && gh.active > 0){
-			        	idxOfHand = gHand.indexOf(gh.Card);
-				        gHand.remove(idxOfHand);
-				        //print something
-				        play("hand:-" + idxOfHand + "-card-should-be-sombrero-" + "-Oh-my-ten-gallon-hat-is-so-heavy");
-				        break;
-			         }
-			         else if(gh.Card.equals("ironplate") && gh.active > 0){
-			        	idxOfHand = gHand.indexOf(gh.Card);
-				        gHand.remove(idxOfHand);
-				        //print something
-				        play("hand:-" + idxOfHand + "-card-should-be-ironplate-" + "-nothing-can-come-through-with-my-iron-plate");
-				        break;
-			         }
-			         else if(gh.Card.equals("bible") && gh.active > 0){
-				        idxOfHand = gHand.indexOf(gh.Card);
-					    gHand.remove(idxOfHand);
-					        //print something
-					    play("hand:-" + idxOfHand + "-card-should-be-bible-" + "-God-is-awesome!");
-					    break;
-				     }
-			        
-			      }				
+			GreenHand green;
+			for (int i = 0; i < gHand.size();i++){
+				green = gHand.get(i);
+				if (green.isActive() && (green.getCard().equals("sombrero") || green.getCard().equals("tengallonhat") 
+						|| green.getCard().equals("ironplate") || green.getCard().equals("bible"))) {
+					gHand.remove(i);
+					play("Play Green: " + i + "-you-can-do-better-than-this!");
+					i = gHand.size();
+				}
 			}
-			else if(hand.contains("missed") ){
+			
+			
+//			if(gHand.contains("sombrero") || gHand.contains("tengallonhat") || gHand.contains("ironplate") 
+//					 || gHand.contains("bible")){
+//
+//				 Iterator<GreenHand> iter = gHand.iterator();
+//				 while (iter.hasNext()) {      // any more element
+//			         // Retrieve the next element, explicitly downcast from Object back to String
+//			         GreenHand gh = iter.next();
+//			         if(gh.Card.equals("sombrero") && gh.isActive()){
+//			        	idxOfHand = gHand.indexOf(gh.Card);
+//			        	gHand.remove(idxOfHand);
+//			        	//print something
+//			        	play("Hand:-" + idxOfHand + "-card-should-be-sombrero-" + "-you-can-do-better-than-this!");
+//			        	break;
+//			         }
+//			         else if(gh.Card.equals("tengallonhat") && gh.isActive()){
+//			        	idxOfHand = gHand.indexOf(gh.Card);
+//				        gHand.remove(idxOfHand);
+//				        //print something
+//				        play("hand:-" + idxOfHand + "-card-should-be-sombrero-" + "-Oh-my-ten-gallon-hat-is-so-heavy");
+//				        break;
+//			         }
+//			         else if(gh.Card.equals("ironplate") && gh.isActive()){
+//			        	idxOfHand = gHand.indexOf(gh.Card);
+//				        gHand.remove(idxOfHand);
+//				        //print something
+//				        play("hand:-" + idxOfHand + "-card-should-be-ironplate-" + "-nothing-can-come-through-with-my-iron-plate");
+//				        break;
+//			         }
+//			         else if(gh.Card.equals("bible") && gh.isActive()){
+//				        idxOfHand = gHand.indexOf(gh.Card);
+//					    gHand.remove(idxOfHand);
+//					        //print something
+//					    play("hand:-" + idxOfHand + "-card-should-be-bible-" + "-God-is-awesome!");
+//					    break;
+//				     }
+//			        
+//			      }				
+//			}
+//			else 
+				if(hand.contains("missed") ){
 				idxOfHand = hand.indexOf("missed");
 				hand.remove(idxOfHand);
 				//print something
@@ -453,6 +473,7 @@ public class App
 				//
 				if (health >= 2){
 					health = health - 1;
+					play("Ouch!");
 				}
 				else
 				{
@@ -814,7 +835,7 @@ public class App
 			}
 			if (cBCard.equals("gatling")) {
 				hand.remove(i);
-				play("Hand: " + i + " On player: " + choosePlayerIndex(myRange) + "--" + printArray[29]);
+				play("Play card: " + i + "--" + printArray[29]);
 				playHand();
 			}
 			if (cBCard.equals("punch")) {
@@ -853,7 +874,7 @@ public class App
 			}
 			if (cBCard.equals("duel")) {
 				hand.remove(i);
-				play(String.valueOf("Play card: " + i + " and " + randomCard(i) + " On player: " + choosePlayerIndex(roles.size())) + "--" + printArray[24]);
+				play(String.valueOf("Play card: " + i + " On player: " + choosePlayerIndex(roles.size())) + "--" + printArray[24]);
 				//someoneShootAtMe("duel");
 				playHand();
 			}
