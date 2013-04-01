@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  * Hello world!
- *
+ * echo "b1,gren,bible" > bang.txt
  */
 public class App
 {
@@ -353,7 +353,7 @@ public class App
 		}
 		else{
 			health = health - 3;
-			play("ouch"  +  printArray[17]);
+			play("ouch"  +  printArray[56]);
 			
 		}
 		
