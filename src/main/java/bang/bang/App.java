@@ -404,6 +404,7 @@ public class App
 		}
 		else 
 		{
+			boolean playedGreen = false;
 			GreenHand green;
 			for (int i = 0; i < gHand.size();i++){
 				green = gHand.get(i);
@@ -412,6 +413,7 @@ public class App
 					gHand.remove(i);
 					play("Play Green: " + i + "-you-can-do-better-than-this!");
 					i = gHand.size();
+					playedGreen = true;
 				}
 			}
 			
@@ -455,21 +457,21 @@ public class App
 //			      }				
 //			}
 //			else 
-				if(hand.contains("missed") ){
+				if(hand.contains("missed") && !playedGreen){
 				idxOfHand = hand.indexOf("missed");
 				hand.remove(idxOfHand);
 				//print something
 				System.out.println("hand:-" + idxOfHand + "-card-should-be-miss " + "-You-Missed.");
 				play (String.valueOf("hand:-" + idxOfHand + "-card-should-be-miss-" + "-You-Missed."));
 			}
-			else if(hand.contains("dodge")){
+			else if(hand.contains("dodge") && !playedGreen){
 				idxOfHand = hand.indexOf("dodge");
 				hand.remove(idxOfHand);
 				//print something
 				play("hand: " + idxOfHand + " card should be dodge " + " I dodged the bullet.");
 				
 			}
-			else{
+			else if (!playedGreen){
 				//
 				if (health >= 2){
 					health = health - 1;
