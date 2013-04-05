@@ -291,7 +291,7 @@ public class App
 						takeCardFromHand(cardType, card);
 						//lastCardPlayed = card;
 					}
-					else if(card.equals("bang") || card.equals("pepperbox") || card.equals("howitzer") || card.equals("Buffalorifle")
+					else if(card.equals("bang") || card.equals("pepperbox") || card.equals("howitzer") || card.equals("buffalorifle")
 							 || card.equals("punch") || card.equals("knife") || card.equals("derringer") 
 							     || card.equals("springfield") || card.equals("indians") || card.equals("duel")){
 						
@@ -394,7 +394,7 @@ public class App
 				//lost one health, if health is <= 0 print out die message
 				if(health >=2){
 					health = health - 1;
-					play ("Almost-got-me" + printArray[11]  + "health-is:-" + health );
+					play ("Almost-got-me" + printArray[11]  + "-health-is:" + health );
 				}
 				else
 				{
