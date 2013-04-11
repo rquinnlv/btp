@@ -288,6 +288,12 @@ public class App
 					
 					if(card.equals("panic") || card.equals("conestoga") || card.equals("ragtime") 
 							  || card.equals("cancan") || card.equals("cat") || card.equals("brawl")){
+						takeCardFromHand();
+						//lastCardPlayed = card;
+					}
+					else if(card.equals("scope") || card.equals("binocular") || card.equals("schofield") 
+							  || card.equals("remington") || card.equals("revcarabine") || card.equals("winchester")
+							  || card.equals("volcanic")){
 						takeCardFromHand(cardType, card);
 						//lastCardPlayed = card;
 					}
@@ -361,17 +367,17 @@ public class App
 
 	private static void healMe() {
 		// TODO Auto-generated method stub
-		if(health >= 4){
+		if((health >= 4 && !myRole.equals("sheriff")) || (health >= 5 && myRole.equals("sheriff"))){
 			
 			//Print i have full health don't need to heal me
-			play("I-have-full-health,-don't-need-your-heal");
+			play("I-have-full-health,-but-I-will-take-that-drink!");
 		}
 		else
 		{
 			health = health + 1;
 			
 			//print my full health
-			play("my health-should be:-" + health);
+			play(printArray[59]);
 		}
 		
 	}
@@ -399,6 +405,7 @@ public class App
 				else
 				{
 					play ("I-am-dead-" + printArray[13]);
+					health = health - 1;
 				}
 			}
 		}
@@ -499,28 +506,69 @@ public class App
 
 	private static void takeCardFromHand(String cardType,String card) {
 		
-		int tmp;
-		if (hand.size() >=1) {
-			tmp = randomCard();
-			hand.remove(tmp);
-			play("Remove from hand: " + tmp +  printArray[8]);
+		if (card.equals("binocular")) {
+			rangeOther--;
+			myRange = rangeOther + rangeGun;
+			play(printArray[1]);
 		}
-		else if (bHand.size() >= 1) {
-			tmp = 0 + (int)(Math.random() * ((bHand.size() - 0) + 1));
-			bHand.remove(tmp);
-			play("Remove from Blue hand: " + tmp +  printArray[8]);
+		else if (card.equals("scope")) {
+			rangeOther--;
+			myRange = rangeOther + rangeGun;
+			play(printArray[2]);
 		}
-		else if (gHand.size() >= 1) {
-			tmp = 0 + (int)(Math.random() * ((gHand.size() - 0) + 1));
-			gHand.remove(tmp);
-			play("Remove from Green hand: " + tmp +  printArray[8]);
+		else if (card.equals("schofield")) {
+			rangeGun = 1;
+			myRange = rangeOther + rangeGun;
+			play(printArray[3]);
+		}
+		else if (card.equals("remington")) {
+			rangeGun = 1;
+			myRange = rangeOther + rangeGun;
+			play(printArray[4]);
+		}
+		else if (card.equals("revcarabine")) {
+			rangeGun = 1;
+			myRange = rangeOther + rangeGun;
+			play(printArray[5]);
+		}
+		else if (card.equals("winchester")) {
+			rangeGun = 1;
+			myRange = rangeOther + rangeGun;
+			play(printArray[6]);
+		}
+		else if (card.equals("volcanic")) {
+			rangeGun = 1;
+			myRange = rangeOther + rangeGun;
+			isVolcanic = false;
+			play(printArray[7]);
 		}
 		else
-		{
-			//print something wrong
-			play("are you sure? if you are here, there is something wrong, you should start a new game. ");
-		}
-		
+			play("What-did-you-take?-" + printArray[9]);
+	}
+		private static void takeCardFromHand() {
+			// remove random card
+			int tmp;
+			if (hand.size() >=1) {
+				tmp = randomCard();
+				hand.remove(tmp);
+				play("Remove from hand: " + tmp +  printArray[8]);
+			}
+			else if (bHand.size() >= 1) {
+				tmp = 0 + (int)(Math.random() * ((bHand.size() - 0) + 1));
+				bHand.remove(tmp);
+				play("Remove from Blue hand: " + tmp +  printArray[8]);
+			}
+			else if (gHand.size() >= 1) {
+				tmp = 0 + (int)(Math.random() * ((gHand.size() - 0) + 1));
+				// this assumes he never loses his scopes/binoculars/guns
+				gHand.remove(tmp);
+				play("Remove from Green hand: " + tmp +  printArray[8]);
+			}
+			else
+			{
+				//print something wrong
+				play("are you sure? if you are here, there is something wrong, you should start a new game. ");
+			}
 		
 //		
 //		int idxOfHand = 0;
@@ -648,12 +696,14 @@ public class App
 			}
 			if (currentCard.equals("binocular")) {
 				rangeOther++;
+				myRange = rangeOther + rangeGun;
 				bHand.remove(i);
 				play("Blue card: " + i + "--" + printArray[54]);
 				playBlueHand();
 			}
 			if (currentCard.equals("scope")) {
 				rangeOther++;
+				myRange = rangeOther + rangeGun;
 				bHand.remove(i);
 				play("Blue card: " + i + "--" + printArray[53]);
 				playBlueHand();
@@ -675,23 +725,28 @@ public class App
 			}
 			if (currentCard.equals("schofield") && rangeGun < 2) {
 				rangeGun = 2;
+				myRange = rangeOther + rangeGun;
 				bHand.remove(i);
 				play("Blue card: " + i + "--" + printArray[48]);
 				playBlueHand();
 			}
 			if (currentCard.equals("remington") && rangeGun < 3){
 				rangeGun = 3;
+				myRange = rangeOther + rangeGun;
 				bHand.remove(i);
 				play("Blue card: " + i + "--" + printArray[49]);
+				playBlueHand();
 			}
 			if (currentCard.equals("revcarabine") && rangeGun < 4){
 				rangeGun = 4;
+				myRange = rangeOther + rangeGun;
 				bHand.remove(i);
 				play("Blue card: " + i + "--" + printArray[48]);
 				playBlueHand();
 			}
 			if (currentCard.equals("winchester") && rangeGun < 5){
 				rangeGun = 5;
+				myRange = rangeOther + rangeGun;
 				bHand.remove(i);
 				play("Blue card: " + i + "--" + printArray[49]);
 				playBlueHand();
@@ -699,6 +754,7 @@ public class App
 			if (currentCard.equals("volcanic")) {
 				if (!(myRole.contains("outlaw") && sheriffPos > 1)) {
 					rangeGun = 1;
+					myRange = rangeOther + rangeGun;
 					isVolcanic = true;
 					bHand.remove(i);
 					play("Blue card: " + i + "--" + printArray[66]);
@@ -916,7 +972,7 @@ public class App
 			String tmp = str.replace(" ", "-");
 			Runtime.getRuntime().exec("python scream.py '" + tmp + "'");
 			System.out.println("python scream.py \"" + tmp + "\"");
-			Thread.sleep(10000);
+			Thread.sleep(16000);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -934,10 +990,10 @@ public class App
 		 * Renegade: shoot all except sheriff, sheriff last
 		 * 
 		 */
-//		if (roles.size() < range) {
-//			range = roles.size() - 1;
-//		}
-		
+		if (roles.size() < range) {
+			range = roles.size() - 1;
+		}
+		System.out.println("range: " + range);
 		int sheriffPos = findSheriff();
 		int direction = 0; // 0 = left, 1 = right
 		
@@ -946,17 +1002,24 @@ public class App
 				//System.out.println("go right");
 				direction = 1;
 			}
+		int index = 0;
 		// size - index is the left index
-		
-		//int index = rnd.nextInt(Math.abs(range));
-		int index = 0 + (int)(Math.random() * (Math.abs(range) + 1));
-		//System.out.println("index: " + index);
-		if (index == 0) 
-			index++;
-		if (direction == 1) {
-			index = roles.size() - index;
+		do {	
+			//int index = rnd.nextInt(Math.abs(range));
+			index = 1 + (int)(Math.random() * (Math.abs(range) + 1));
+			//index = 0 + (int)(Math.random() * (Math.abs(range) + 1));
+			System.out.println("index: " + index + " role.size: " + roles.size());
+			if (index == 0) 
+				index++;
+			if (direction == 1) {
+				index = Math.abs(roles.size() - index); // used to just be< roles.size() - index >but index out of range error
+			}
+			if (index == 0) 
+				index++;
+			System.out.println("range: " + range + " index: " + index + " role.size: " + roles.size());
 		}
-		
+		while (index >= roles.size());
+		//System.out.println(index);
 		
 		if (myRole.equals("sheriff")) {
 			//System.out.println(index);
@@ -996,3 +1059,23 @@ public class App
 	}
 
 }
+/*
+	LXterminal - 2 terminals
+	
+	sudo -s
+	cd btp/src/main/java
+	python button.py
+	
+	next terminal:
+	
+	cd btp/src/main/java
+	java bang.bang.App
+
+	something.txt
+	
+	/home/pi/bbusb/build/bbusb -i something.txt
+	txt a Vote For Buford!!!
+	
+	ha error on b2 saloon
+	error on line 967
+ */
