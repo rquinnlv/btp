@@ -690,7 +690,7 @@ public class App
 			}
 			else if (currentCard.equals("jail") && roles.size() <= 2) {
 				bHand.remove(i);
-				play("Blue card:-" + i + "-goes-to-the-trash-" + printArray[10]);
+				play("Blue card:-" + i + "-goes-to-the-trash.-" + printArray[10]);
 			}
 			if (currentCard.equals("dynamite")) {
 				//playerIndex = choosePlayerIndex(roles.size());
