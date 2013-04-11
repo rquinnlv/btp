@@ -680,13 +680,17 @@ public class App
 		
 			currentCard = bHand.get(i);
 			
-			if (currentCard.equals("jail")) {
+			if (currentCard.equals("jail") && roles.size() > 2) {
 				do
 					playerIndex = choosePlayerIndex(roles.size());
 				while (playerIndex == sheriffPos);
 				bHand.remove(i);
 				play("Blue card: " + i + " against player: " + playerIndex + "--" + printArray[57]);
 				playBlueHand();
+			}
+			else if (currentCard.equals("jail") && roles.size() <= 2) {
+				bHand.remove(i);
+				play("Blue card:-" + i + "-goes-to-the-trash-" + printArray[10]);
 			}
 			if (currentCard.equals("dynamite")) {
 				//playerIndex = choosePlayerIndex(roles.size());
