@@ -997,7 +997,7 @@ public class App
 		if (roles.size() < range) {
 			range = roles.size() - 1;
 		}
-		System.out.println("range: " + range);
+		//System.out.println("range: " + range);
 		int sheriffPos = findSheriff();
 		int direction = 0; // 0 = left, 1 = right
 		
@@ -1012,7 +1012,7 @@ public class App
 			//int index = rnd.nextInt(Math.abs(range));
 			index = 1 + (int)(Math.random() * (Math.abs(range) + 1));
 			//index = 0 + (int)(Math.random() * (Math.abs(range) + 1));
-			System.out.println("index: " + index + " role.size: " + roles.size());
+			//System.out.println("index: " + index + " role.size: " + roles.size());
 			if (index == 0) 
 				index++;
 			if (direction == 1) {
@@ -1020,7 +1020,7 @@ public class App
 			}
 			if (index == 0) 
 				index++;
-			System.out.println("range: " + range + " index: " + index + " role.size: " + roles.size());
+			//System.out.println("range: " + range + " index: " + index + " role.size: " + roles.size());
 		}
 		while (index >= roles.size());
 		//System.out.println(index);
