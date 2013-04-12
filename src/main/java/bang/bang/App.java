@@ -976,7 +976,7 @@ public class App
 			String tmp = str.replace(" ", "-");
 			Runtime.getRuntime().exec("python scream.py '" + tmp + "'");
 			System.out.println("python scream.py \"" + tmp + "\"");
-			Thread.sleep(25000);
+			Thread.sleep(18000);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
